@@ -1,0 +1,51 @@
+{
+  "supersession_unparsed_count": 10,
+  "supersession_unparsed": [
+    {
+      "id": "AV-06-2011",
+      "subject": "SUPERSEDED BY ANAC Flight Alert (FA) No. 24/2012"
+    },
+    {
+      "id": "CZLC-I890-79",
+      "subject": "SUPERSEDED BY AD (BULLETIN) CZLC-3/81"
+    },
+    {
+      "id": "G-002-02-91",
+      "subject": "SUPERSEDED: Electrical Power - Inspection of in-line splices APU generator circuit for overheating."
+    },
+    {
+      "id": "G-003-02-91",
+      "subject": "SUPERSEDED: Electrical Power - Inspection of in-line splices in the integrated drive generator circuits for overheating."
+    },
+    {
+      "id": "G-004-02-94",
+      "subject": "SUPERSEDED: Altitude limitation in icing conditions."
+    },
+    {
+      "id": "G-004-12-96",
+      "subject": "SUPERSEDED: Inspection for, and application of primer to -drill marked- areas on the underside of the wing top skin panels."
+    },
+    {
+      "id": "G-005-12-96",
+      "subject": "SUPERSEDED: Landing Gear - Main landing gear - Inspection of the outer link for cracks."
+    },
+    {
+      "id": "G-006-01-2002R1",
+      "subject": "CANCELLED/SUPERSEDED: Stabilisers - Introduction of a detail visual inspection of the vertical stabiliser attachment fittings and introduction of corrosion preventative treatment."
+    },
+    {
+      "id": "G-007-04-95",
+      "subject": "SUPERSEDED: Fuselage - To inspect wing attachment bushes in fuselage rear spar frame for migration."
+    },
+    {
+      "id": "G-015-08-91",
+      "subject": "SUPERSEDED: Wings - Centre section - Inspection of wing top skins at rib -0- for possible cracking."
+    }
+  ],
+  "records_without_models": 10,
+  "records_without_documents": 4,
+  "records_without_holder": 2,
+  "class_inferred": 28,
+  "model_tokens_starting_with_hyphen": [],
+  "interim_warnings": []
+}

@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "copyright": "https://www.easa.europa.eu/en/copyright-disclaimer",
+  "archive_pages": {
+    "airworthiness_directives": "https://www.easa.europa.eu/en/domains/aircraft-products/airworthiness-directives-ad/archive-airworthiness-directives",
+    "sib_sd": "https://www.easa.europa.eu/en/domains/aircraft-products/airworthiness-directives-ad/archive-safety-information-bulletin-and-safety-directives"
+  },
+  "sources": {
+    "archive_ad": {
+      "url": "https://www.easa.europa.eu/en/datasets/144347/export/json",
+      "records": 17454,
+      "records_total": 17454,
+      "by_class": {
+        "AD": 16556,
+        "ADR": 138,
+        "EAD": 695,
+        "PAD": 65
+      },
+      "issue_date_min": "1957-11-25",
+      "issue_date_max": "2026-10-27",
+      "sha256": "cf1a14d52c998a6e65f83ba79301515a16012e175ce12dc4567de360ed756857"
+    },
+    "archive_sib_sd": {
+      "url": "https://www.easa.europa.eu/en/datasets/144348/export/json",
+      "records": 975,
+      "records_total": 975,
+      "by_class": {
+        "SD": 13,
+        "SIB": 962
+      },
+      "issue_date_min": "2006-04-12",
+      "issue_date_max": "2026-10-09",
+      "sha256": "c3f8beaf5b6c63f0bd028bb1f6621845c758518cbfd7ec7ed9e721052d5766a4"
+    },
+    "biweekly": [
+      {
+        "period": 18,
+        "from": "2026-08-17",
+        "to": "2026-08-30",
+        "rows": 11,
+        "csv_url": "https://www.easa.europa.eu/downloads/144355/en",
+        "csv_label": "CSV (.zip)",
+        "sha256": "3a93d35876208b0bbef9e7a9465f9f6fcfa3c4a7758098f94b0a2220bdf5b64c"
+      },
+      {
+        "period": 19,
+        "from": "2026-08-31",
+        "to": "2026-09-13",
+        "rows": 21,
+        "csv_url": "https://www.easa.europa.eu/downloads/144356/en",
+        "csv_label": "CVS (.zip)",
+        "sha256": "d9f549ff7ec9ffebcdc654ef566d265d5d32dc19ea5e7d92c40f61841fea3182"
+      },
+      {
+        "period": 20,
+        "from": "2026-09-14",
+        "to": "2026-09-27",
+        "rows": 12,
+        "csv_url": "https://www.easa.europa.eu/downloads/144357/en",
+        "csv_label": "CVS (.zip)",
+        "sha256": "1a1b8c7882b55e8efd90f27fe1d77820a1d5bac6ce35630c2d761df3a8aa1082"
+      },
+      {
+        "period": 21,
+        "from": "2026-09-28",
+        "to": "2026-10-11",
+        "rows": 17,
+        "csv_url": "https://www.easa.europa.eu/en/downloads/144358/en",
+        "csv_label": "CSV (.zip)",
+        "sha256": "d7e6388b649bf6e6bccf2d49a59e1ccc72c08729e453749613ba0b3c067edc31"
+      },
+      {
+        "period": 22,
+        "from": "2026-10-12",
+        "to": "2026-10-25",
+        "rows": 20,
+        "csv_url": "https://www.easa.europa.eu/en/downloads/144341/en",
+        "csv_label": "CSV (.zip)",
+        "sha256": "0ac528704d61a2b4360538aed96e1cafe9943a48a6372fc11986128cca0e6453"
+      }
+    ],
+    "interim_page": {
+      "url": "https://www.easa.europa.eu/en/domains/aircraft-products/airworthiness-directives-ad/safety-publications-tool-interim-solution",
+      "last_updated_raw": "06/11/2026",
+      "records": 72,
+      "issue_date_min": "2026-10-06",
+      "issue_date_max": "2026-11-06",
+      "biweekly_periods": 5
+    },
+    "safety_publications_tool": {
+      "url": "https://ad.easa.europa.eu/",
+      "ingested": false,
+      "note": "ad.easa.europa.eu is not fetched while it serves a maintenance page. See easa_ads/safety_publications_tool.py."
+    }
+  },
+  "normalized": {
+    "ad": {
+      "records": 17482,
+      "by_class": {
+        "AD": 16584,
+        "ADR": 138,
+        "EAD": 695,
+        "PAD": 65
+      },
+      "issue_date_min": "1957-11-25",
+      "issue_date_max": "2026-11-06"
+    },
+    "sib": {
+      "records": 962,
+      "by_class": {
+        "SIB": 962
+      },
+      "issue_date_min": "2006-04-12",
+      "issue_date_max": "2026-10-09"
+    },
+    "sd": {
+      "records": 13,
+      "by_class": {
+        "SD": 13
+      },
+      "issue_date_min": "2019-03-12",
+      "issue_date_max": "2026-08-06"
+    },
+    "all": {
+      "records": 18457,
+      "by_class": {
+        "AD": 16584,
+        "ADR": 138,
+        "EAD": 695,
+        "PAD": 65,
+        "SD": 13,
+        "SIB": 962
+      },
+      "issue_date_min": "1957-11-25",
+      "issue_date_max": "2026-11-06"
+    }
+  },
+  "overlap": {
+    "in_all_three": 28,
+    "in_archive_and_biweekly": 78,
+    "in_archive_and_interim": 46,
+    "in_biweekly_and_interim": 28,
+    "only_archive": 18333,
+    "only_biweekly": 2,
+    "only_interim": 26
+  }
+}

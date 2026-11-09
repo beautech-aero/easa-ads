@@ -1,0 +1,17 @@
+[project]
+name = "easa-ads"
+version = "1.0.0"
+description = "Normalized mirror of EASA airworthiness directives, safety information bulletins, and safety directives."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+easa-ads = "easa_ads.__main__:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["easa_ads*"]
