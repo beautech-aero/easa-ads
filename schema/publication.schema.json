@@ -1,0 +1,171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/beautech-aero/easa-ads/schema/publication.schema.json",
+  "title": "EASA safety publication",
+  "description": "One airworthiness directive, proposed AD, safety information bulletin, or safety directive, normalized from EASA's public archive, biweekly CSV, or interim page. class distinguishes the kinds. The same object is stored for every source.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "number",
+    "base_number",
+    "revision",
+    "correction",
+    "revises",
+    "cancels",
+    "class",
+    "class_source",
+    "emergency",
+    "cancelled",
+    "marked_correction",
+    "issue_date",
+    "effective_date",
+    "subject",
+    "approval_holders",
+    "models",
+    "documents",
+    "issued_by",
+    "superseded_by",
+    "superseded_by_text",
+    "supersedes",
+    "source",
+    "sources",
+    "raw"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "description": "Record shape version. Bump this when a field changes meaning."
+    },
+    "id": {
+      "type": "string",
+      "description": "Publication number as EASA prints it, for example 2026-0203R1, US-2025-14-03, SAIB-2026-17, SD-2026-01. Unique across AD, SIB, and SD."
+    },
+    "number": {
+      "type": "string",
+      "description": "Same value as id. Present so a reader can ask for the number by that name."
+    },
+    "base_number": {
+      "type": "string",
+      "description": "id with a trailing revision (R1) or correction (C1) removed. A trailing -E stays, because 2026-0191-E is the document's own number. A trailing -CN is removed."
+    },
+    "revision": {
+      "type": ["string", "null"],
+      "description": "Revision suffix such as R1 or R01, or null."
+    },
+    "correction": {
+      "type": ["string", "null"],
+      "description": "Correction suffix such as C1, or null. A subject that starts with [Correction] is marked_correction instead."
+    },
+    "revises": {
+      "type": ["string", "null"],
+      "description": "Previous number implied by the revision suffix. R1 points at base_number, R2 points at base_number plus R1. This is numbering, not a legal supersession."
+    },
+    "cancels": {
+      "type": ["string", "null"],
+      "description": "For a -CN cancellation notice, the number with -CN removed. Otherwise null."
+    },
+    "class": {
+      "type": "string",
+      "enum": ["AD", "EAD", "ADR", "PAD", "SIB", "SD"],
+      "description": "EASA publication class. AD, EAD (emergency), ADR, and PAD (proposed) are filed under data/ad. SIB and SD have their own folders."
+    },
+    "class_source": {
+      "type": "string",
+      "enum": ["archive", "interim", "inferred"],
+      "description": "archive: the export named the class. interim: an icon on the interim page. inferred: guessed from the number or the subject because the biweekly CSV has no class column."
+    },
+    "emergency": {
+      "type": "boolean"
+    },
+    "cancelled": {
+      "type": "boolean",
+      "description": "True when the number ends in -CN or the subject is a cancellation notice."
+    },
+    "marked_correction": {
+      "type": "boolean",
+      "description": "True when the subject starts with [Correction]."
+    },
+    "issue_date": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "ISO date. Archive values were MM/DD/YYYY."
+    },
+    "effective_date": {
+      "type": ["string", "null"],
+      "format": "date"
+    },
+    "subject": {
+      "type": "string"
+    },
+    "approval_holders": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Holder on the first line of the archive field, plus organisations introduced by HOLDER:model in the designation line."
+    },
+    "models": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Type-designation tokens. Slashes are separators, so CF34-10E5 is its own token. A search for CF34-10E is a prefix of those tokens."
+    },
+    "documents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["url", "label", "kind"],
+        "properties": {
+          "url": { "type": "string" },
+          "label": { "type": "string" },
+          "kind": { "type": "string", "enum": ["pdf", "zip", "csv", "html", "other"] }
+        }
+      },
+      "description": "Links only. Archive PDFs are not stored in this repository."
+    },
+    "issued_by": {
+      "type": ["string", "null"],
+      "description": "State of design code from the interim page (EU, US, CA, BR), or null when the row came only from the archive."
+    },
+    "superseded_by": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Publication ids parsed from a SUPERSEDED BY phrase. FAA citations are rewritten to the US- prefix used in this dataset, ANAC to BR-, TCCA to CF-."
+    },
+    "superseded_by_text": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "The citation text that produced each superseded_by id, same order."
+    },
+    "supersedes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Ids in this dataset whose superseded_by list points here."
+    },
+    "source": {
+      "type": "string",
+      "enum": ["archive", "biweekly", "interim"],
+      "description": "Which source supplied the subject and the dates. sources lists every place the number was seen."
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind", "url"],
+        "properties": {
+          "kind": { "type": "string", "enum": ["archive", "biweekly", "interim"] },
+          "url": { "type": "string" },
+          "dataset": { "type": "string" },
+          "period": { "type": "integer" },
+          "from": { "type": "string" },
+          "to": { "type": "string" }
+        }
+      }
+    },
+    "raw": {
+      "type": "object",
+      "description": "Original fields from the source named in source. Keys differ by source. The raw archive JSON and biweekly CSV files are also stored under data/raw."
+    }
+  }
+}

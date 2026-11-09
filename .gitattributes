@@ -1,0 +1,5 @@
+* text=auto eol=lf
+*.jsonl text eol=lf
+*.json text eol=lf
+# Raw EASA downloads keep the bytes EASA sent, including CSV CRLF.
+data/raw/** -text

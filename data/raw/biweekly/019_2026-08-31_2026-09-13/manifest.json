@@ -1,0 +1,22 @@
+{
+  "period": 19,
+  "from": "2026-08-31",
+  "to": "2026-09-13",
+  "rows": 21,
+  "csv": {
+    "url": "https://www.easa.europa.eu/downloads/144356/en",
+    "label": "CVS (.zip)",
+    "zip_filename": "easa_biweekly_19-2026-csv.zip",
+    "member": "easa_biweekly_19-2026.csv",
+    "sha256": "d9f549ff7ec9ffebcdc654ef566d265d5d32dc19ea5e7d92c40f61841fea3182",
+    "bytes": 3080
+  },
+  "html": {
+    "url": "https://www.easa.europa.eu/downloads/144360/en",
+    "label": "HTML (.zip)"
+  },
+  "pdf": {
+    "url": "https://www.easa.europa.eu/en/downloads/144364/en",
+    "label": "PDF"
+  }
+}
