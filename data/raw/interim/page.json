@@ -1,7 +1,18 @@
 {
   "url": "https://www.easa.europa.eu/en/domains/aircraft-products/airworthiness-directives-ad/safety-publications-tool-interim-solution",
-  "last_updated_raw": "06/11/2026",
+  "last_updated_raw": "10/11/2026",
   "biweekly": [
+    {
+      "period": 23,
+      "from": "2026-10-26",
+      "to": "2026-11-08",
+      "csv_url": "https://www.easa.europa.eu/en/downloads/144459/en",
+      "csv_label": "CSV (.zip)",
+      "html_url": "https://www.easa.europa.eu/en/downloads/144466/en",
+      "html_label": "HTML (.zip)",
+      "pdf_url": "https://www.easa.europa.eu/en/downloads/144458/en",
+      "pdf_label": "PDF"
+    },
     {
       "period": 22,
       "from": "2026-10-12",
@@ -55,6 +66,17 @@
       "html_url": "https://www.easa.europa.eu/downloads/144359/en",
       "html_label": "HTML (.zip)",
       "pdf_url": "https://www.easa.europa.eu/en/downloads/144363/en",
+      "pdf_label": "PDF"
+    },
+    {
+      "period": 17,
+      "from": "2026-08-16",
+      "to": "2026-08-03",
+      "csv_url": "https://www.easa.europa.eu/en/downloads/144456/en",
+      "csv_label": "CSV (.zip)",
+      "html_url": "https://www.easa.europa.eu/en/downloads/144455/en",
+      "html_label": "HTML (.zip)",
+      "pdf_url": "https://www.easa.europa.eu/en/downloads/144457/en",
       "pdf_label": "PDF"
     }
   ],
