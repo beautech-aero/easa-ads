@@ -99,10 +99,10 @@
     ],
     "interim_page": {
       "url": "https://www.easa.europa.eu/en/domains/aircraft-products/airworthiness-directives-ad/safety-publications-tool-interim-solution",
-      "last_updated_raw": "10/11/2026",
-      "records": 72,
+      "last_updated_raw": "11/11/2026",
+      "records": 78,
       "issue_date_min": "2026-10-06",
-      "issue_date_max": "2026-11-06",
+      "issue_date_max": "2026-11-11",
       "biweekly_periods": 7
     },
     "safety_publications_tool": {
@@ -113,15 +113,15 @@
   },
   "normalized": {
     "ad": {
-      "records": 17482,
+      "records": 17488,
       "by_class": {
-        "AD": 16584,
+        "AD": 16590,
         "ADR": 138,
         "EAD": 695,
         "PAD": 65
       },
       "issue_date_min": "1957-11-25",
-      "issue_date_max": "2026-11-06"
+      "issue_date_max": "2026-11-11"
     },
     "sib": {
       "records": 962,
@@ -140,9 +140,9 @@
       "issue_date_max": "2026-08-06"
     },
     "all": {
-      "records": 18457,
+      "records": 18463,
       "by_class": {
-        "AD": 16584,
+        "AD": 16590,
         "ADR": 138,
         "EAD": 695,
         "PAD": 65,
@@ -150,7 +150,7 @@
         "SIB": 962
       },
       "issue_date_min": "1957-11-25",
-      "issue_date_max": "2026-11-06"
+      "issue_date_max": "2026-11-11"
     }
   },
   "overlap": {
@@ -160,6 +160,6 @@
     "in_biweekly_and_interim": 55,
     "only_archive": 18317,
     "only_biweekly": 2,
-    "only_interim": 4
+    "only_interim": 10
   }
 }

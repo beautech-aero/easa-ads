@@ -1,6 +1,6 @@
 {
   "url": "https://www.easa.europa.eu/en/domains/aircraft-products/airworthiness-directives-ad/safety-publications-tool-interim-solution",
-  "last_updated_raw": "10/11/2026",
+  "last_updated_raw": "11/11/2026",
   "biweekly": [
     {
       "period": 23,
@@ -81,6 +81,259 @@
     }
   ],
   "publications": [
+    {
+      "number": "2026-0216",
+      "issued_by": "EU",
+      "issue_date": "2026-11-11",
+      "effective_date": "2026-11-18",
+      "subject": "Wings – Wing Mid Spars – Inspection",
+      "class_hint": null,
+      "approval_holders": [
+        "AIRBUS S.A.S."
+      ],
+      "models": [
+        "A380",
+        "A380-841",
+        "A380-842",
+        "A380-861"
+      ],
+      "documents": [
+        {
+          "url": "https://www.easa.europa.eu/en/downloads/144476/en",
+          "label": "PDF",
+          "kind": "pdf"
+        }
+      ]
+    },
+    {
+      "number": "2026-21-08",
+      "issued_by": "US",
+      "issue_date": "2026-11-11",
+      "effective_date": "2026-12-01",
+      "subject": "Wings - Left- and Right-Side Form-in-Place Gasket – Inspection",
+      "class_hint": null,
+      "approval_holders": [
+        "BOEING"
+      ],
+      "models": [
+        "737",
+        "737-700",
+        "737-700C",
+        "737-800",
+        "737-900ER"
+      ],
+      "documents": [
+        {
+          "url": "https://www.easa.europa.eu/en/downloads/144473/en",
+          "label": "PDF",
+          "kind": "pdf"
+        }
+      ]
+    },
+    {
+      "number": "2026-21-07",
+      "issued_by": "US",
+      "issue_date": "2026-11-11",
+      "effective_date": "2026-12-01",
+      "subject": "Wings - Left- and Right-Side Form-in-Place Gasket – Inspection",
+      "class_hint": null,
+      "approval_holders": [
+        "BOEING"
+      ],
+      "models": [
+        "737",
+        "737-8 (MAX)",
+        "737-8200 (MAX)",
+        "737-9 (MAX)"
+      ],
+      "documents": [
+        {
+          "url": "https://www.easa.europa.eu/en/downloads/144472/en",
+          "label": "PDF",
+          "kind": "pdf"
+        }
+      ]
+    },
+    {
+      "number": "26-136",
+      "issued_by": "EU",
+      "issue_date": "2026-11-11",
+      "effective_date": null,
+      "subject": "Time Limits / Maintenance Checks – Time Limits Manual / Maintenance Programme – Amendment",
+      "class_hint": null,
+      "approval_holders": [
+        "ROLLS-ROYCE DEUTSCHLAND Ltd & Co KG"
+      ],
+      "models": [
+        "TRENT 1000",
+        "Trent 1000-AE3",
+        "Trent 1000-CE3",
+        "Trent 1000-D3",
+        "Trent 1000-G3",
+        "Trent 1000-H3",
+        "Trent 1000-J3",
+        "Trent 1000-K3",
+        "Trent 1000-L3",
+        "Trent 1000-M3",
+        "Trent 1000-N3",
+        "Trent 1000-P3",
+        "Trent 1000-Q3",
+        "Trent 1000-R3"
+      ],
+      "documents": [
+        {
+          "url": "https://www.easa.europa.eu/en/downloads/144471/en",
+          "label": "PDF",
+          "kind": "pdf"
+        }
+      ]
+    },
+    {
+      "number": "26-135",
+      "issued_by": "EU",
+      "issue_date": "2026-11-11",
+      "effective_date": null,
+      "subject": "Oxygen – Chemical Oxygen Generators – Replacement",
+      "class_hint": null,
+      "approval_holders": [
+        "AIRBUS S.A.S."
+      ],
+      "models": [
+        "A300-600",
+        "A300B4-601",
+        "A300B4-603",
+        "A300B4-605R",
+        "A300B4-620",
+        "A300B4-622",
+        "A300B4-622R",
+        "A300C4-605R variant F",
+        "A300C4-620",
+        "A300F4-605R",
+        "A300F4-622R",
+        "A310",
+        "A310-203",
+        "A310-203C",
+        "A310-204",
+        "A310-221",
+        "A310-222",
+        "A310-304",
+        "A310-308",
+        "A310-322",
+        "A310-324",
+        "A310-325",
+        "A318",
+        "A318-111",
+        "A318-112",
+        "A318-121",
+        "A318-122",
+        "A319",
+        "A319-111",
+        "A319-112",
+        "A319-113",
+        "A319-114",
+        "A319-115",
+        "A319-131",
+        "A319-132",
+        "A319-133",
+        "A319-151N",
+        "A319-153N",
+        "A319-171N",
+        "A319-173N",
+        "A320",
+        "A320-211",
+        "A320-212",
+        "A320-214",
+        "A320-215",
+        "A320-216",
+        "A320-231",
+        "A320-232",
+        "A320-233",
+        "A320-251N",
+        "A320-252N",
+        "A320-253N",
+        "A320-271N",
+        "A320-272N",
+        "A320-273N",
+        "A321",
+        "A321-111",
+        "A321-112",
+        "A321-131",
+        "A321-211",
+        "A321-212",
+        "A321-213",
+        "A321-231",
+        "A321-232",
+        "A321-251N",
+        "A321-251NX",
+        "A321-252N",
+        "A321-252NX",
+        "A321-253N",
+        "A321-253NX",
+        "A321-253NY",
+        "A321-271N",
+        "A321-271NX",
+        "A321-271NY",
+        "A321-272N",
+        "A321-272NX",
+        "A330",
+        "A330-201",
+        "A330-202",
+        "A330-203",
+        "A330-223",
+        "A330-243",
+        "A330-301",
+        "A330-302",
+        "A330-303",
+        "A330-321",
+        "A330-322",
+        "A330-323",
+        "A330-341",
+        "A330-342",
+        "A330-343",
+        "A330-743L (BelugaXL)",
+        "A330-841",
+        "A330-941",
+        "A340",
+        "A340-211",
+        "A340-212",
+        "A340-213",
+        "A340-311",
+        "A340-312",
+        "A340-313",
+        "A340-541",
+        "A340-542",
+        "A340-642",
+        "A340-643"
+      ],
+      "documents": [
+        {
+          "url": "https://www.easa.europa.eu/en/downloads/144470/en",
+          "label": "PDF",
+          "kind": "pdf"
+        }
+      ]
+    },
+    {
+      "number": "26-134",
+      "issued_by": "EU",
+      "issue_date": "2026-11-11",
+      "effective_date": null,
+      "subject": "Rotorcraft Flight Manual – Limitations and Normal Procedures Section – Amendment",
+      "class_hint": null,
+      "approval_holders": [
+        "AIRBUS HELICOPTERS"
+      ],
+      "models": [
+        "EC175"
+      ],
+      "documents": [
+        {
+          "url": "https://www.easa.europa.eu/en/downloads/144469/en",
+          "label": "PDF",
+          "kind": "pdf"
+        }
+      ]
+    },
     {
       "number": "2026-0202R1",
       "issued_by": "EU",
