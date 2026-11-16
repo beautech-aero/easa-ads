@@ -4,19 +4,19 @@
   "to": "2026-10-11",
   "rows": 17,
   "csv": {
-    "url": "https://www.easa.europa.eu/en/downloads/144358/en",
-    "label": "CSV (.zip)",
-    "zip_filename": "easa_biweekly_21-2026-csv.zip",
+    "url": "https://ad.easa.europa.eu/blob/easa_biweekly_2026-09-28_2026-10-11_21-2026.csv/biweekly",
+    "label": "CSV",
+    "zip_filename": "easa_biweekly_21-2026.csv",
     "member": "easa_biweekly_21-2026.csv",
     "sha256": "d7e6388b649bf6e6bccf2d49a59e1ccc72c08729e453749613ba0b3c067edc31",
     "bytes": 2278
   },
   "html": {
-    "url": "https://www.easa.europa.eu/en/downloads/144362/en",
-    "label": "HTML (.zip)"
+    "url": "https://ad.easa.europa.eu/blob/easa_biweekly_2026-09-28_2026-10-11_21-2026.html/biweekly",
+    "label": "HTML"
   },
   "pdf": {
-    "url": "https://www.easa.europa.eu/en/downloads/144366/en",
+    "url": "https://ad.easa.europa.eu/blob/easa_biweekly_2026-09-28_2026-10-11_21-2026.pdf/biweekly",
     "label": "PDF"
   }
 }

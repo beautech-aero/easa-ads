@@ -269,6 +269,48 @@ class MergeAndQueryTests(unittest.TestCase):
         self.assertEqual(record["models"], ["ATR42", "ATR72"])
         self.assertTrue(record["marked_correction"])
 
+    def test_same_date_archive_keeps_models_and_tool_adds_documents(self) -> None:
+        archive = build_record(
+            number="SAIB-2026-17",
+            subject="Archive subject",
+            issue_date="2026-10-09",
+            effective_date=None,
+            holders=["BOEING"],
+            models=["737"],
+            documents=[{"url": "https://www.easa.europa.eu/archive.pdf", "label": "archive.pdf", "kind": "pdf"}],
+            origin="archive",
+            source_url="https://archive.example",
+            explicit_class="SIB",
+            raw={"from": "archive"},
+        )
+        tool = build_record(
+            number="SAIB-2026-17",
+            subject="Tool subject",
+            issue_date="2026-10-09",
+            effective_date=None,
+            holders=["BOEING"],
+            models=["SA 330 / AS 332 / EC 225", "737", "737-800"],
+            documents=[{"url": "https://ad.easa.europa.eu/blob/sib.pdf/SIB_1", "label": "sib.pdf", "kind": "pdf"}],
+            origin="interim",
+            source_url="https://ad.easa.europa.eu/ad/SAIB-2026-17",
+            icon_class="SIB",
+            issued_by="US",
+            raw={"from": "tool"},
+        )
+        record = merge_contributions({"SAIB-2026-17": [archive, tool]})[0]
+        self.assertEqual(record["source"], "archive")
+        self.assertEqual(record["subject"], "Archive subject")
+        self.assertEqual(record["models"], ["737"])
+        self.assertEqual(record["issued_by"], "US")
+        self.assertEqual(
+            {item["url"] for item in record["documents"]},
+            {
+                "https://www.easa.europa.eu/archive.pdf",
+                "https://ad.easa.europa.eu/blob/sib.pdf/SIB_1",
+            },
+        )
+        self.assertEqual({item["kind"] for item in record["sources"]}, {"archive", "interim"})
+
     def test_model_prefix_query(self) -> None:
         self.assertTrue(model_matches("CF34-10E5", "CF34-10E"))
         self.assertTrue(model_matches("cf34-10e", "CF34-10E"))

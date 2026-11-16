@@ -16,14 +16,20 @@ ARCHIVE_SIB_SD_PAGE = (
     "archive-safety-information-bulletin-and-safety-directives"
 )
 
+# Retired in November 2026. The page now only says the tool is back online
+# and no longer lists biweekly files or publications. Ingest does not fetch it.
 INTERIM_PAGE_URL = (
     f"{ORIGIN}/en/domains/aircraft-products/airworthiness-directives-ad/"
     "safety-publications-tool-interim-solution"
 )
 
-# Interactive Safety Publications Tool. It was serving a maintenance page
-# when this dataset was built, so ingest does not call it.
-SAFETY_PUBLICATIONS_TOOL_URL = "https://ad.easa.europa.eu/"
+# Safety Publications Tool. Biweekly indexes and the live publication list
+# are served here now that the interim page has been retired.
+TOOL_ORIGIN = "https://ad.easa.europa.eu"
+SAFETY_PUBLICATIONS_TOOL_URL = f"{TOOL_ORIGIN}/"
+BIWEEKLY_INDEX_URL = f"{TOOL_ORIGIN}/biweekly"
+TOOL_SEARCH_URL = f"{TOOL_ORIGIN}/search/advanced/result/"
+SD_LIST_URL = f"{TOOL_ORIGIN}/sd-docs/page-1"
 
 COPYRIGHT_URL = f"{ORIGIN}/en/copyright-disclaimer"
 

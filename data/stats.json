@@ -34,12 +34,21 @@
     },
     "biweekly": [
       {
+        "period": 16,
+        "from": "2026-07-20",
+        "to": "2026-08-02",
+        "rows": 23,
+        "csv_url": "https://ad.easa.europa.eu/blob/easa_biweekly_2026-07-20_2026-08-02_16-2026.csv/biweekly",
+        "csv_label": "CSV",
+        "sha256": "645b9655a7a80bc5533184ce2e0dba5fc62794fba4c6217e7fdc00e7ea8d812b"
+      },
+      {
         "period": 17,
-        "from": "2026-08-16",
-        "to": "2026-08-03",
+        "from": "2026-08-03",
+        "to": "2026-08-16",
         "rows": 16,
-        "csv_url": "https://www.easa.europa.eu/en/downloads/144456/en",
-        "csv_label": "CSV (.zip)",
+        "csv_url": "https://ad.easa.europa.eu/blob/easa_biweekly_2026-08-03_2026-08-16_17-2026.csv/biweekly",
+        "csv_label": "CSV",
         "sha256": "eac26adb01c42804bc4c6cfb1cbd1bcef87d61ded64d02f82e2b2c6dddd19ca3"
       },
       {
@@ -47,8 +56,8 @@
         "from": "2026-08-17",
         "to": "2026-08-30",
         "rows": 11,
-        "csv_url": "https://www.easa.europa.eu/downloads/144355/en",
-        "csv_label": "CSV (.zip)",
+        "csv_url": "https://ad.easa.europa.eu/blob/easa_biweekly_2026-08-17_2026-08-30_18-2026.csv/biweekly",
+        "csv_label": "CSV",
         "sha256": "3a93d35876208b0bbef9e7a9465f9f6fcfa3c4a7758098f94b0a2220bdf5b64c"
       },
       {
@@ -56,8 +65,8 @@
         "from": "2026-08-31",
         "to": "2026-09-13",
         "rows": 21,
-        "csv_url": "https://www.easa.europa.eu/downloads/144356/en",
-        "csv_label": "CVS (.zip)",
+        "csv_url": "https://ad.easa.europa.eu/blob/easa_biweekly_2026-08-31_2026-09-13_19-2026.csv/biweekly",
+        "csv_label": "CSV",
         "sha256": "d9f549ff7ec9ffebcdc654ef566d265d5d32dc19ea5e7d92c40f61841fea3182"
       },
       {
@@ -65,8 +74,8 @@
         "from": "2026-09-14",
         "to": "2026-09-27",
         "rows": 12,
-        "csv_url": "https://www.easa.europa.eu/downloads/144357/en",
-        "csv_label": "CVS (.zip)",
+        "csv_url": "https://ad.easa.europa.eu/blob/easa_biweekly_2026-09-14_2026-09-27_20-2026.csv/biweekly",
+        "csv_label": "CSV",
         "sha256": "1a1b8c7882b55e8efd90f27fe1d77820a1d5bac6ce35630c2d761df3a8aa1082"
       },
       {
@@ -74,8 +83,8 @@
         "from": "2026-09-28",
         "to": "2026-10-11",
         "rows": 17,
-        "csv_url": "https://www.easa.europa.eu/en/downloads/144358/en",
-        "csv_label": "CSV (.zip)",
+        "csv_url": "https://ad.easa.europa.eu/blob/easa_biweekly_2026-09-28_2026-10-11_21-2026.csv/biweekly",
+        "csv_label": "CSV",
         "sha256": "d7e6388b649bf6e6bccf2d49a59e1ccc72c08729e453749613ba0b3c067edc31"
       },
       {
@@ -83,8 +92,8 @@
         "from": "2026-10-12",
         "to": "2026-10-25",
         "rows": 20,
-        "csv_url": "https://www.easa.europa.eu/en/downloads/144341/en",
-        "csv_label": "CSV (.zip)",
+        "csv_url": "https://ad.easa.europa.eu/blob/easa_biweekly_2026-10-12_2026-10-25_22-2026.csv/biweekly",
+        "csv_label": "CSV",
         "sha256": "0ac528704d61a2b4360538aed96e1cafe9943a48a6372fc11986128cca0e6453"
       },
       {
@@ -92,44 +101,47 @@
         "from": "2026-10-26",
         "to": "2026-11-08",
         "rows": 27,
-        "csv_url": "https://www.easa.europa.eu/en/downloads/144459/en",
-        "csv_label": "CSV (.zip)",
+        "csv_url": "https://ad.easa.europa.eu/blob/easa_biweekly_2026-10-26_2026-11-08_23-2026.csv/biweekly",
+        "csv_label": "CSV",
         "sha256": "f8f4def467d3287ba003f20dd837d02069d6112b28e4be1911cffd6db97e3fb1"
       }
     ],
     "interim_page": {
-      "url": "https://www.easa.europa.eu/en/domains/aircraft-products/airworthiness-directives-ad/safety-publications-tool-interim-solution",
-      "last_updated_raw": "11/11/2026",
-      "records": 78,
-      "issue_date_min": "2026-10-06",
-      "issue_date_max": "2026-11-11",
-      "biweekly_periods": 7
+      "url": "https://ad.easa.europa.eu/",
+      "last_updated_raw": null,
+      "records": 106,
+      "issue_date_min": "2026-09-18",
+      "issue_date_max": "2026-11-16",
+      "biweekly_periods": 8,
+      "window_from": "2026-09-18",
+      "window_to": "2026-11-16",
+      "note": "The interim page was retired in November 2026. These rows are the Safety Publications Tool publications in the window that are missing from the archive or newer than the archive's copy."
     },
     "safety_publications_tool": {
       "url": "https://ad.easa.europa.eu/",
-      "ingested": false,
-      "note": "ad.easa.europa.eu is not fetched while it serves a maintenance page. See easa_ads/safety_publications_tool.py."
+      "ingested": true,
+      "note": "Biweekly CSVs are listed at /biweekly and downloaded as plain text. Publications issued after the latest CSV, and SIBs or SDs the biweekly files do not carry, are read from the tool's result table."
     }
   },
   "normalized": {
     "ad": {
-      "records": 17488,
+      "records": 17500,
       "by_class": {
         "AD": 16590,
-        "ADR": 138,
+        "ADR": 142,
         "EAD": 695,
-        "PAD": 65
+        "PAD": 73
       },
       "issue_date_min": "1957-11-25",
-      "issue_date_max": "2026-11-11"
+      "issue_date_max": "2026-11-16"
     },
     "sib": {
-      "records": 962,
+      "records": 965,
       "by_class": {
-        "SIB": 962
+        "SIB": 965
       },
       "issue_date_min": "2006-04-12",
-      "issue_date_max": "2026-10-09"
+      "issue_date_max": "2026-11-16"
     },
     "sd": {
       "records": 13,
@@ -140,26 +152,26 @@
       "issue_date_max": "2026-08-06"
     },
     "all": {
-      "records": 18463,
+      "records": 18478,
       "by_class": {
         "AD": 16590,
-        "ADR": 138,
+        "ADR": 142,
         "EAD": 695,
-        "PAD": 65,
+        "PAD": 73,
         "SD": 13,
-        "SIB": 962
+        "SIB": 965
       },
       "issue_date_min": "1957-11-25",
-      "issue_date_max": "2026-11-11"
+      "issue_date_max": "2026-11-16"
     }
   },
   "overlap": {
-    "in_all_three": 33,
-    "in_archive_and_biweekly": 99,
-    "in_archive_and_interim": 46,
-    "in_biweekly_and_interim": 55,
-    "only_archive": 18317,
-    "only_biweekly": 2,
-    "only_interim": 10
+    "in_all_three": 47,
+    "in_archive_and_biweekly": 120,
+    "in_archive_and_interim": 61,
+    "in_biweekly_and_interim": 69,
+    "only_archive": 18295,
+    "only_biweekly": 4,
+    "only_interim": 23
   }
 }
