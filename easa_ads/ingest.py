@@ -11,20 +11,19 @@ import json
 import re
 import shutil
 from collections import Counter
+from datetime import date
 from pathlib import Path
 
-from easa_ads.biweekly import csv_from_zip, parse_csv
+from easa_ads.biweekly import fetch_biweekly_periods, load_biweekly_download, parse_csv
 from easa_ads.const import (
     ARCHIVE_AD_PAGE,
     ARCHIVE_AD_URL,
     ARCHIVE_SIB_SD_PAGE,
     ARCHIVE_SIB_SD_URL,
     COPYRIGHT_URL,
-    INTERIM_PAGE_URL,
     SAFETY_PUBLICATIONS_TOOL_URL,
 )
 from easa_ads.http import HttpClient
-from easa_ads.interim import parse_interim_html
 from easa_ads.merge import merge_contributions
 from easa_ads.normalize import (
     bucket_for,
@@ -37,11 +36,16 @@ from easa_ads.normalize import (
     parse_documents_html,
     public_record,
 )
+from easa_ads.safety_publications_tool import (
+    dedupe_publications,
+    fetch_recent_publications,
+    fetch_safety_directives,
+    is_newer_than_archive,
+    listing_window,
+)
 MIN_ARCHIVE_AD = 10_000
 MIN_ARCHIVE_SIB = 500
 MIN_ARCHIVE_SD = 1
-MIN_BIWEEKLY_PERIODS = 1
-MIN_INTERIM_ROWS = 1
 
 _ARCHIVE_FIELDS = (
     "AD class",
@@ -66,24 +70,29 @@ def ingest(data_dir: Path, client: HttpClient) -> dict:
     print("Fetching SIB/SD archive…")
     sib_blob = client.get(ARCHIVE_SIB_SD_URL).body
     sib_payload = _load_archive(sib_blob, "SIB/SD archive")
-    print("Fetching interim page…")
-    interim_blob = client.get(INTERIM_PAGE_URL).body
-    interim_html = interim_blob.decode("utf-8", errors="replace")
-    interim = parse_interim_html(interim_html)
-    if len(interim.periods) < MIN_BIWEEKLY_PERIODS:
-        raise RuntimeError(
-            "interim page listed no biweekly CSV links; the page layout may have changed"
-        )
-    if len(interim.publications) < MIN_INTERIM_ROWS:
-        raise RuntimeError(
-            "interim page listed no publications; the page layout may have changed"
-        )
+    ad_rows = ad_payload["data"]
+    sib_rows = sib_payload["data"]
+    _require_archive_size(ad_rows, sib_rows)
+    archive_dates = _archive_dates(ad_rows, sib_rows)
+    ad_max = _max_issue_date(ad_rows)
+    sib_max = _max_issue_date(row for row in sib_rows if row.get("AD class") == "SIB")
+    if ad_max is None or sib_max is None:
+        raise RuntimeError("archive issue dates could not be read")
+    today = date.today()
+    periods, index_warnings = fetch_biweekly_periods(
+        client,
+        archive_max=date.fromisoformat(ad_max),
+        today=today,
+    )
 
     biweekly_files: list[dict] = []
-    for period in sorted(interim.periods, key=lambda item: item.period):
-        print(f"Fetching biweekly {period.period} CSV…")
+    for period in periods:
+        print(f"Fetching biweekly {period.period} ({period.date_from} to {period.date_to}) CSV…")
         fetched = client.get(period.csv_url)
-        member, csv_bytes = csv_from_zip(fetched.body)
+        member, csv_bytes = load_biweekly_download(
+            fetched.body,
+            filename=_download_name(fetched.headers, period.csv_url),
+        )
         rows = parse_csv(csv_bytes, filename=member)
         biweekly_files.append(
             {
@@ -95,11 +104,20 @@ def ingest(data_dir: Path, client: HttpClient) -> dict:
             }
         )
 
-    ad_rows = ad_payload["data"]
-    sib_rows = sib_payload["data"]
-    _require_archive_size(ad_rows, sib_rows)
+    start, end = listing_window(date.fromisoformat(ad_max), date.fromisoformat(sib_max), today)
+    recent = fetch_recent_publications(client, start=start, end=end)
+    directives = [
+        row
+        for row in fetch_safety_directives(client)
+        if row.issue_date and start.isoformat() <= row.issue_date <= end.isoformat()
+    ]
+    listing = [
+        row
+        for row in dedupe_publications(recent + directives)
+        if is_newer_than_archive(row.issue_date, archive_dates.get(row.number))
+    ]
 
-    contributions = _contributions(ad_rows, sib_rows, biweekly_files, interim)
+    contributions = _contributions(ad_rows, sib_rows, biweekly_files, listing)
     grouped: dict[str, list[dict]] = {}
     for record in contributions:
         grouped.setdefault(record["id"], []).append(record)
@@ -107,14 +125,16 @@ def ingest(data_dir: Path, client: HttpClient) -> dict:
     link_supersession(merged)
     _require_unique(merged)
 
-    stats = _stats(ad_payload, sib_payload, biweekly_files, interim, merged)
-    report = _parse_report(merged, interim.warnings)
+    stats = _stats(ad_payload, sib_payload, biweekly_files, listing, start, end, merged)
+    report = _parse_report(merged, index_warnings)
     _write_all(
         data_dir,
         ad_blob=ad_blob,
         sib_blob=sib_blob,
         biweekly_files=biweekly_files,
-        interim=interim,
+        listing=listing,
+        window_start=start,
+        window_end=end,
         merged=merged,
         stats=stats,
         report=report,
@@ -150,7 +170,30 @@ def _require_archive_size(ad_rows: list, sib_rows: list) -> None:
             raise RuntimeError(f"{label} archive is missing columns {missing}")
 
 
-def _contributions(ad_rows, sib_rows, biweekly_files, interim) -> list[dict]:
+def _archive_dates(ad_rows, sib_rows) -> dict[str, str | None]:
+    dates: dict[str, str | None] = {}
+    for row in list(ad_rows) + list(sib_rows):
+        number = str(row.get("Class number") or "")
+        if number:
+            dates[number] = parse_date(row.get("Issue Date"))
+    return dates
+
+
+def _max_issue_date(rows) -> str | None:
+    dates = []
+    for row in rows:
+        try:
+            parsed = parse_date(row.get("Issue Date"))
+        except ValueError:
+            parsed = None
+        if parsed:
+            dates.append(parsed)
+    if not dates:
+        return None
+    return max(dates)
+
+
+def _contributions(ad_rows, sib_rows, biweekly_files, listing) -> list[dict]:
     records: list[dict] = []
     seen_archive: set[tuple[str, str]] = set()
     for dataset, url, rows in (
@@ -172,12 +215,12 @@ def _contributions(ad_rows, sib_rows, biweekly_files, interim) -> list[dict]:
                 continue
             seen_in_period.add(row.number)
             records.append(_from_biweekly(row, period))
-    seen_interim: set[str] = set()
-    for row in interim.publications:
-        if row.number in seen_interim:
+    seen_listing: set[str] = set()
+    for row in listing:
+        if row.number in seen_listing:
             continue
-        seen_interim.add(row.number)
-        records.append(_from_interim(row))
+        seen_listing.add(row.number)
+        records.append(_from_listing(row))
     return records
 
 
@@ -236,7 +279,10 @@ def _from_biweekly(row, period) -> dict:
     )
 
 
-def _from_interim(row) -> dict:
+def _from_listing(row) -> dict:
+    # ``interim`` stays the source kind: it is the live, detailed list that
+    # the retired interim page used to be, and the record schema already
+    # allows that kind.
     return build_record(
         number=row.number,
         subject=row.subject,
@@ -246,7 +292,7 @@ def _from_interim(row) -> dict:
         models=list(row.models),
         documents=list(row.documents),
         origin="interim",
-        source_url=INTERIM_PAGE_URL,
+        source_url=row.url,
         icon_class=row.class_hint,
         issued_by=row.issued_by,
         raw={
@@ -269,7 +315,7 @@ def _require_unique(records: list[dict]) -> None:
         raise RuntimeError("merged dataset has duplicate publication numbers")
 
 
-def _stats(ad_payload, sib_payload, biweekly_files, interim, merged) -> dict:
+def _stats(ad_payload, sib_payload, biweekly_files, listing, window_start, window_end, merged) -> dict:
     ad_rows = ad_payload["data"]
     sib_rows = sib_payload["data"]
 
@@ -288,7 +334,7 @@ def _stats(ad_payload, sib_payload, biweekly_files, interim, merged) -> dict:
 
     ad_min, ad_max = span(ad_rows)
     sib_min, sib_max = span(sib_rows)
-    interim_dates = [row.issue_date for row in interim.publications if row.issue_date]
+    listing_dates = [row.issue_date for row in listing if row.issue_date]
     by_bucket: dict[str, list[dict]] = {"ad": [], "sib": [], "sd": []}
     for record in merged:
         by_bucket[bucket_for(record["class"])].append(record)
@@ -362,19 +408,27 @@ def _stats(ad_payload, sib_payload, biweekly_files, interim, merged) -> dict:
                 for item in biweekly_files
             ],
             "interim_page": {
-                "url": INTERIM_PAGE_URL,
-                "last_updated_raw": interim.last_updated,
-                "records": len(interim.publications),
-                "issue_date_min": min(interim_dates) if interim_dates else None,
-                "issue_date_max": max(interim_dates) if interim_dates else None,
-                "biweekly_periods": len(interim.periods),
+                "url": SAFETY_PUBLICATIONS_TOOL_URL,
+                "last_updated_raw": None,
+                "records": len(listing),
+                "issue_date_min": min(listing_dates) if listing_dates else None,
+                "issue_date_max": max(listing_dates) if listing_dates else None,
+                "biweekly_periods": len(biweekly_files),
+                "window_from": window_start.isoformat(),
+                "window_to": window_end.isoformat(),
+                "note": (
+                    "The interim page was retired in November 2026. These rows are the "
+                    "Safety Publications Tool publications in the window that are missing "
+                    "from the archive or newer than the archive's copy."
+                ),
             },
             "safety_publications_tool": {
                 "url": SAFETY_PUBLICATIONS_TOOL_URL,
-                "ingested": False,
+                "ingested": True,
                 "note": (
-                    "ad.easa.europa.eu is not fetched while it serves a maintenance page. "
-                    "See easa_ads/safety_publications_tool.py."
+                    "Biweekly CSVs are listed at /biweekly and downloaded as plain text. "
+                    "Publications issued after the latest CSV, and SIBs or SDs the "
+                    "biweekly files do not carry, are read from the tool's result table."
                 ),
             },
         },
@@ -420,7 +474,19 @@ def _parse_report(records: list[dict], interim_warnings: list[str]) -> dict:
     }
 
 
-def _write_all(data_dir, *, ad_blob, sib_blob, biweekly_files, interim, merged, stats, report) -> None:
+def _write_all(
+    data_dir,
+    *,
+    ad_blob,
+    sib_blob,
+    biweekly_files,
+    listing,
+    window_start,
+    window_end,
+    merged,
+    stats,
+    report,
+) -> None:
     data_dir.mkdir(parents=True, exist_ok=True)
     raw_archive = data_dir / "raw" / "archive"
     raw_archive.mkdir(parents=True, exist_ok=True)
@@ -466,25 +532,27 @@ def _write_all(data_dir, *, ad_blob, sib_blob, biweekly_files, interim, merged, 
     _write_json(
         interim_dir / "page.json",
         {
-            "url": INTERIM_PAGE_URL,
-            "last_updated_raw": interim.last_updated,
+            "url": SAFETY_PUBLICATIONS_TOOL_URL,
+            "last_updated_raw": None,
+            "window": {"from": window_start.isoformat(), "to": window_end.isoformat()},
             "biweekly": [
                 {
-                    "period": period.period,
-                    "from": period.date_from,
-                    "to": period.date_to,
-                    "csv_url": period.csv_url,
-                    "csv_label": period.csv_label,
-                    "html_url": period.html_url,
-                    "html_label": period.html_label,
-                    "pdf_url": period.pdf_url,
-                    "pdf_label": period.pdf_label,
+                    "period": item["period"].period,
+                    "from": item["period"].date_from,
+                    "to": item["period"].date_to,
+                    "csv_url": item["period"].csv_url,
+                    "csv_label": item["period"].csv_label,
+                    "html_url": item["period"].html_url,
+                    "html_label": item["period"].html_label,
+                    "pdf_url": item["period"].pdf_url,
+                    "pdf_label": item["period"].pdf_label,
                 }
-                for period in interim.periods
+                for item in biweekly_files
             ],
             "publications": [
                 {
                     "number": row.number,
+                    "url": row.url,
                     "issued_by": row.issued_by,
                     "issue_date": row.issue_date,
                     "effective_date": row.effective_date,
@@ -494,7 +562,7 @@ def _write_all(data_dir, *, ad_blob, sib_blob, biweekly_files, interim, merged, 
                     "models": row.models,
                     "documents": row.documents,
                 }
-                for row in interim.publications
+                for row in listing
             ],
         },
     )
@@ -546,6 +614,17 @@ def _model_index(records: list[dict], *, with_class: bool) -> list[dict]:
         else:
             rows.append({"model": model, "ids": sorted(grouped[model])})
     return rows
+
+
+def _download_name(headers, url: str) -> str | None:
+    named = _content_filename(headers)
+    if named:
+        return named
+    parts = [part for part in url.split("?", 1)[0].split("/") if part]
+    for part in reversed(parts):
+        if part.lower().endswith(".csv"):
+            return part
+    return None
 
 
 def _content_filename(headers) -> str | None:

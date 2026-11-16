@@ -1,7 +1,10 @@
-"""Parse the interim safety-publications HTML page.
+"""Parse the retired interim safety-publications HTML page.
 
-The page has two tables: biweekly bundle links, then one row per publication
-issued while the Safety Publications Tool is down. Publication rows are not
+EASA took this page down in November 2026. Ingest no longer fetches it.
+The parser stays so the saved fixture can still be read.
+
+The page had two tables: biweekly bundle links, then one row per publication
+issued while the Safety Publications Tool was down. Publication rows are not
 all marked up the same way. Some put the holder in a paragraph and the
 models in a nested list; proposed ADs put the holder on the outer list item.
 Proposed ADs and SIBs also carry a class icon (``adclass_pad.gif``).
@@ -13,6 +16,7 @@ import re
 from dataclasses import dataclass, field
 from html.parser import HTMLParser
 
+from easa_ads.biweekly import BiweeklyPeriod
 from easa_ads.normalize import (
     absolute_url,
     clean,
@@ -24,19 +28,6 @@ from easa_ads.normalize import (
 
 _VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "wbr"}
 _LAST_UPDATED = re.compile(r"Last updated:\s*([0-9]{2}/[0-9]{2}/[0-9]{4})", re.IGNORECASE)
-
-
-@dataclass
-class BiweeklyPeriod:
-    period: int
-    date_from: str
-    date_to: str
-    csv_url: str
-    csv_label: str
-    html_url: str
-    html_label: str
-    pdf_url: str
-    pdf_label: str
 
 
 @dataclass

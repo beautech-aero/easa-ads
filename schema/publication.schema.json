@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/beautech-aero/easa-ads/schema/publication.schema.json",
   "title": "EASA safety publication",
-  "description": "One airworthiness directive, proposed AD, safety information bulletin, or safety directive, normalized from EASA's public archive, biweekly CSV, or interim page. class distinguishes the kinds. The same object is stored for every source.",
+  "description": "One airworthiness directive, proposed AD, safety information bulletin, or safety directive, normalized from EASA's public archive, a biweekly CSV, or the Safety Publications Tool. class distinguishes the kinds. The same object is stored for every source. source interim is that live tool list (it was the interim page until November 2026).",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -74,7 +74,7 @@
     "class_source": {
       "type": "string",
       "enum": ["archive", "interim", "inferred"],
-      "description": "archive: the export named the class. interim: an icon on the interim page. inferred: guessed from the number or the subject because the biweekly CSV has no class column."
+      "description": "archive: the export named the class. interim: a class icon on the Safety Publications Tool (previously the interim page). inferred: guessed from the number or the subject because the biweekly CSV has no class column."
     },
     "emergency": {
       "type": "boolean"
@@ -125,7 +125,7 @@
     },
     "issued_by": {
       "type": ["string", "null"],
-      "description": "State of design code from the interim page (EU, US, CA, BR), or null when the row came only from the archive."
+      "description": "State of design code from the Safety Publications Tool (EU, US, CA, BR, and others), or null when the row came only from the archive."
     },
     "superseded_by": {
       "type": "array",
@@ -145,7 +145,7 @@
     "source": {
       "type": "string",
       "enum": ["archive", "biweekly", "interim"],
-      "description": "Which source supplied the subject and the dates. sources lists every place the number was seen."
+      "description": "Which source supplied the subject and the dates. interim is the live Safety Publications Tool list. sources lists every place the number was seen."
     },
     "sources": {
       "type": "array",

@@ -295,6 +295,9 @@ def absolute_url(href: str) -> str:
 
 def document_kind(url: str, label: str) -> str:
     path = url.split("?", 1)[0].lower()
+    # Blob URLs put the filename in the middle:
+    # /blob/EASA_AD_2026_0219.pdf/AD_2026-0219_1
+    segments = [segment for segment in path.split("/") if segment]
     for extension, kind in (
         (".pdf", "pdf"),
         (".zip", "zip"),
@@ -302,7 +305,7 @@ def document_kind(url: str, label: str) -> str:
         (".html", "html"),
         (".htm", "html"),
     ):
-        if path.endswith(extension):
+        if any(segment.endswith(extension) for segment in segments):
             return kind
     lowered = label.lower()
     if "pdf" in lowered:

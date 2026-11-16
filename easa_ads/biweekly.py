@@ -1,24 +1,59 @@
-"""Read one biweekly CSV out of the zip EASA links from the interim page.
+"""Read a biweekly publication list.
 
-The CSV is the source of truth for that fortnight. It has no header and no
-publication class. Columns, in order, are number, issue date, approval
-holder, type designation, and subject. The HTML and PDF bundles linked
-beside it repeat the same list and are not parsed.
+EASA now publishes the index at ``https://ad.easa.europa.eu/biweekly``.
+Each row links a CSV, an HTML file, and a PDF for one fortnight. The CSV
+is plain text (older copies were zip files; those are still accepted).
+It has no header and no publication class. Columns, in order, are number,
+issue date, approval holder, type designation, and subject. The HTML and
+PDF files repeat the same list and are not parsed.
 """
 
 from __future__ import annotations
 
 import csv
 import io
+import re
 import zipfile
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from datetime import date, timedelta
+from html.parser import HTMLParser
 
-from easa_ads.normalize import clean
+from easa_ads.const import BIWEEKLY_INDEX_URL, TOOL_ORIGIN
+from easa_ads.http import HttpClient
+from easa_ads.normalize import clean, parse_date
+
+# How far behind the archive's newest AD a fortnight must end before it is
+# dropped. The archive lags, and a few ADs never appear in it at all.
+OVERLAP_DAYS = 90
+# A current index's newest fortnight should have ended within this many days.
+FRESH_DAYS = 28
+
+_YEAR_LINK = re.compile(r"biweekly/\?year=(\d{4})")
 
 # A biweekly file is a few kilobytes. Refuse anything that does not look
 # like that kind of file so a hostile or truncated zip cannot expand forever.
 MAX_CSV_BYTES = 20 * 1024 * 1024
 MAX_ZIP_MEMBERS = 5
+
+
+@dataclass
+class BiweeklyPeriod:
+    period: int
+    date_from: str
+    date_to: str
+    csv_url: str
+    csv_label: str
+    html_url: str
+    html_label: str
+    pdf_url: str
+    pdf_label: str
+
+
+@dataclass
+class BiweeklyIndex:
+    periods: list[BiweeklyPeriod] = field(default_factory=list)
+    years: list[int] = field(default_factory=list)
+    warnings: list[str] = field(default_factory=list)
 
 
 @dataclass(frozen=True)
@@ -96,3 +131,244 @@ def _decode(data: bytes, filename: str) -> str:
         except UnicodeDecodeError:
             continue
     raise ValueError(f"{filename} is not UTF-8 or Windows-1252 text")
+
+
+def load_biweekly_download(blob: bytes, *, filename: str | None) -> tuple[str, bytes]:
+    """Return ``(member name, csv bytes)`` from a zip or a plain CSV."""
+    if blob.startswith(b"PK"):
+        return csv_from_zip(blob)
+    sample = blob.lstrip()[:200].lower()
+    if sample.startswith(b"<") or sample.startswith(b"<!doctype"):
+        raise ValueError("biweekly download is HTML, not a CSV")
+    if len(blob) > MAX_CSV_BYTES:
+        raise ValueError(f"biweekly CSV is larger than {MAX_CSV_BYTES} bytes")
+    name = filename or "biweekly.csv"
+    name = name.replace("\\", "/").rsplit("/", 1)[-1]
+    if not name.lower().endswith(".csv"):
+        name = "biweekly.csv"
+    return name, blob
+
+
+def parse_biweekly_index(html: str) -> BiweeklyIndex:
+    """Read fortnight rows and year links from a biweekly index page."""
+    index = BiweeklyIndex(years=sorted({int(year) for year in _YEAR_LINK.findall(html or "")}))
+    parser = _IndexParser()
+    parser.feed(html or "")
+    parser.close()
+    if not parser.found_table:
+        return index
+    for row in parser.rows:
+        if len(row) < 6:
+            continue
+        period_text = _cell_text(row[0])
+        if not period_text.isdigit():
+            continue
+        csv_url, csv_label = _first_link(row[3])
+        html_url, html_label = _first_link(row[4])
+        pdf_url, pdf_label = _first_link(row[5])
+        if ".csv" not in csv_url.casefold():
+            index.warnings.append(f"biweekly {period_text} has no CSV link")
+            continue
+        try:
+            date_from = parse_date(_cell_text(row[1])) or ""
+            date_to = parse_date(_cell_text(row[2])) or ""
+        except ValueError as exc:
+            index.warnings.append(f"biweekly {period_text} has an unreadable date ({exc})")
+            continue
+        if not date_from or not date_to:
+            index.warnings.append(f"biweekly {period_text} is missing a date")
+            continue
+        index.periods.append(
+            BiweeklyPeriod(
+                period=int(period_text),
+                date_from=date_from,
+                date_to=date_to,
+                csv_url=_absolute(csv_url),
+                csv_label=csv_label or "CSV",
+                html_url=_absolute(html_url),
+                html_label=html_label or "HTML",
+                pdf_url=_absolute(pdf_url),
+                pdf_label=pdf_label or "PDF",
+            )
+        )
+    return index
+
+
+def select_periods(
+    periods: list[BiweeklyPeriod],
+    *,
+    archive_max: date,
+    today: date,
+    overlap_days: int = OVERLAP_DAYS,
+    fresh_days: int = FRESH_DAYS,
+) -> list[BiweeklyPeriod]:
+    """Keep fortnights that still overlap a lagging archive.
+
+    Raises when the index has no CSV rows, or when the newest fortnight
+    ended too long ago to be the live index.
+    """
+    if not periods:
+        raise RuntimeError(
+            "biweekly index listed no CSV links; the page layout may have changed"
+        )
+    newest_end = max(date.fromisoformat(_period_end(period)) for period in periods)
+    if newest_end < today - timedelta(days=fresh_days):
+        raise RuntimeError(
+            f"newest biweekly period ended on {newest_end.isoformat()}, "
+            f"more than {fresh_days} days before {today.isoformat()}; "
+            "the page layout may have changed"
+        )
+    window_start = archive_max - timedelta(days=overlap_days)
+    chosen = [
+        period
+        for period in periods
+        if date.fromisoformat(_period_end(period)) >= window_start
+    ]
+    if not chosen:
+        raise RuntimeError(
+            "biweekly index had no period overlapping the archive; the dates could not be read"
+        )
+    chosen.sort(key=lambda period: (period.date_from, period.period))
+    return chosen
+
+
+def fetch_biweekly_periods(
+    client: HttpClient,
+    *,
+    archive_max: date,
+    today: date,
+) -> tuple[list[BiweeklyPeriod], list[str]]:
+    """Download the current index and the previous year when the overlap needs it."""
+    print("Fetching biweekly index…")
+    index = parse_biweekly_index(client.get(BIWEEKLY_INDEX_URL).body.decode("utf-8", "replace"))
+    warnings = list(index.warnings)
+    periods = list(index.periods)
+    window_start = archive_max - timedelta(days=OVERLAP_DAYS)
+    newest_end = max((date.fromisoformat(_period_end(period)) for period in periods), default=None)
+    stale = newest_end is None or newest_end < today - timedelta(days=FRESH_DAYS)
+    short = not periods or _earliest_start(periods) > window_start
+    if (stale or short) and index.years:
+        year = max(index.years)
+        print(f"Fetching biweekly index for {year}…")
+        older = parse_biweekly_index(
+            client.get(f"{BIWEEKLY_INDEX_URL}/?year={year}").body.decode("utf-8", "replace")
+        )
+        warnings.extend(older.warnings)
+        periods = _merge_periods(periods, older.periods)
+    return select_periods(periods, archive_max=archive_max, today=today), warnings
+
+
+def _period_end(period: BiweeklyPeriod) -> str:
+    """Later published date. One historical row has its from/to swapped."""
+    return max(period.date_from, period.date_to)
+
+
+def _earliest_start(periods: list[BiweeklyPeriod]) -> date:
+    return min(date.fromisoformat(min(period.date_from, period.date_to)) for period in periods)
+
+
+def _merge_periods(
+    current: list[BiweeklyPeriod],
+    older: list[BiweeklyPeriod],
+) -> list[BiweeklyPeriod]:
+    merged: dict[tuple[int, str, str], BiweeklyPeriod] = {}
+    for period in older + current:
+        merged[(period.period, period.date_from, period.date_to)] = period
+    return list(merged.values())
+
+
+def _absolute(href: str) -> str:
+    href = (href or "").strip()
+    if not href:
+        return ""
+    if href.startswith("https://") or href.startswith("http://"):
+        return href
+    if href.startswith("//"):
+        return "https:" + href
+    if not href.startswith("/"):
+        href = "/" + href
+    return TOOL_ORIGIN + href
+
+
+def _cell_text(events: list[tuple]) -> str:
+    parts: list[str] = []
+    for kind, value in events:
+        if kind == "text":
+            parts.append(value)
+        elif kind == "br":
+            parts.append(" ")
+    return clean("".join(parts))
+
+
+def _first_link(events: list[tuple]) -> tuple[str, str]:
+    href: str | None = None
+    label: list[str] = []
+    for kind, value in events:
+        if kind == "a_start":
+            href = value or ""
+            label = []
+        elif kind == "text" and href is not None:
+            label.append(value)
+        elif kind == "img" and href is not None and value:
+            label.append(value)
+        elif kind == "a_end" and href is not None:
+            text = clean("".join(label))
+            # Prefer the icon's alt ("CSV") over the file-size text ("4 kb").
+            alt = next((item for item in label if item in {"CSV", "HTML", "PDF"}), "")
+            return href, clean(alt or text)
+    return "", ""
+
+
+class _IndexParser(HTMLParser):
+    """Collect rows of the biweekly index table."""
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.found_table = False
+        self.rows: list[list[list[tuple]]] = []
+        self._in_table = False
+        self._row: list | None = None
+        self._cell: list | None = None
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        attributes = {key: value or "" for key, value in attrs}
+        if tag == "table" and attributes.get("id") == "tblBiweekly":
+            self._in_table = True
+            self.found_table = True
+            return
+        if not self._in_table:
+            return
+        if tag == "tr":
+            self._row = []
+            return
+        if tag in {"td", "th"} and self._row is not None:
+            self._cell = []
+            return
+        if self._cell is None:
+            return
+        if tag == "br":
+            self._cell.append(("br", None))
+        elif tag == "img":
+            alt = attributes.get("alt", "")
+            if alt:
+                self._cell.append(("img", alt))
+        elif tag == "a":
+            self._cell.append(("a_start", attributes.get("href", "")))
+
+    def handle_endtag(self, tag: str) -> None:
+        if not self._in_table:
+            return
+        if tag in {"td", "th"} and self._cell is not None and self._row is not None:
+            self._row.append(self._cell)
+            self._cell = None
+        elif tag == "tr" and self._row is not None:
+            self.rows.append(self._row)
+            self._row = None
+        elif tag == "table":
+            self._in_table = False
+        elif tag == "a" and self._cell is not None:
+            self._cell.append(("a_end", None))
+
+    def handle_data(self, data: str) -> None:
+        if self._cell is not None and data:
+            self._cell.append(("text", data))

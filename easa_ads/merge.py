@@ -2,9 +2,10 @@
 
 The archive is a current-status extract: its subject is where "SUPERSEDED
 BY" is maintained, and its model list is the full slash-separated
-designation. A biweekly CSV is the notice from the week the document was
-published, with only the type family. The interim page is the live list for
-documents issued after the archive snapshot, and its model tree is detailed.
+designation. A biweekly CSV is the notice from the fortnight the document
+was published, with only the type family. The live Safety Publications Tool
+list (stored as source ``interim``, the role the retired interim page had)
+covers documents issued after that fortnight, and its model tree is detailed.
 
 For a number that appears more than once, the latest issue date supplies
 the subject and dates. On a tie the archive wins, then the interim page,
