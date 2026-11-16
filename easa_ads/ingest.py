@@ -47,6 +47,7 @@ from easa_ads.safety_publications_tool import (
     fetch_safety_directives,
     is_newer_than_archive,
     listing_window,
+    recorded_window_end,
 )
 MIN_ARCHIVE_AD = 10_000
 MIN_ARCHIVE_SIB = 500
@@ -139,6 +140,10 @@ def ingest(data_dir: Path, client: HttpClient) -> dict:
         for row in dedupe_publications(recent + directives)
         if is_newer_than_archive(row.issue_date, archive_dates.get(row.number))
     ]
+    # The search runs through today. The committed window end is the newest
+    # issue date we kept, so a day with no new publication does not rewrite
+    # stats.json or page.json.
+    recorded_end = recorded_window_end(listing, start)
 
     contributions = _contributions(ad_rows, sib_rows, biweekly_files, listing)
     grouped: dict[str, list[dict]] = {}
@@ -148,7 +153,7 @@ def ingest(data_dir: Path, client: HttpClient) -> dict:
     link_supersession(merged)
     _require_unique(merged)
 
-    stats = _stats(ad_payload, sib_payload, biweekly_files, listing, start, end, merged)
+    stats = _stats(ad_payload, sib_payload, biweekly_files, listing, start, recorded_end, merged)
     report = _parse_report(merged, index_warnings)
     _write_all(
         data_dir,
@@ -157,7 +162,7 @@ def ingest(data_dir: Path, client: HttpClient) -> dict:
         biweekly_files=biweekly_files,
         listing=listing,
         window_start=start,
-        window_end=end,
+        window_end=recorded_end,
         merged=merged,
         stats=stats,
         report=report,

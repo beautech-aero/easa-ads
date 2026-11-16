@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import tempfile
 import unittest
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 
 from easa_ads.biweekly import (
@@ -17,8 +17,12 @@ from easa_ads.biweekly import (
 )
 from easa_ads.normalize import document_kind
 from easa_ads.safety_publications_tool import (
+    ToolPublication,
     is_newer_than_archive,
+    listing_window,
     parse_tool_page,
+    recorded_window_end,
+    row_cap_for_window,
 )
 
 FIXTURES = Path(__file__).parent / "fixtures"
@@ -175,6 +179,52 @@ class ToolPageTests(unittest.TestCase):
         self.assertTrue(is_newer_than_archive("2026-11-05", "2026-11-05"))
         self.assertFalse(is_newer_than_archive("2026-11-04", "2026-11-05"))
         self.assertFalse(is_newer_than_archive(None, "2026-11-05"))
+
+    def test_listing_window_does_not_grow_without_limit(self) -> None:
+        start, end = listing_window(date(2020, 1, 1), date(2020, 1, 1), date(2026, 11, 16))
+        self.assertEqual(end, date(2026, 11, 16))
+        self.assertEqual(start, date(2026, 11, 16) - timedelta(days=120))
+        recent_start, _recent_end = listing_window(
+            date(2026, 10, 27), date(2026, 10, 9), date(2026, 11, 16)
+        )
+        self.assertEqual(recent_start, date(2026, 9, 18))
+
+    def test_row_cap_scales_with_the_window_and_stays_under_the_catalogue(self) -> None:
+        short = row_cap_for_window(date(2026, 11, 1), date(2026, 11, 16))
+        long = row_cap_for_window(date(2026, 7, 19), date(2026, 11, 16))
+        self.assertEqual(short, 400)
+        self.assertGreater(long, 400)
+        self.assertLess(long, 5_000)
+
+    def test_recorded_window_end_is_the_newest_issue_date(self) -> None:
+        rows = [
+            ToolPublication(
+                number="2026-0218",
+                issued_by=None,
+                issue_date="2026-11-13",
+                effective_date=None,
+                subject="",
+                class_hint=None,
+                holders=[],
+                models=[],
+                documents=[],
+                url="",
+            ),
+            ToolPublication(
+                number="2026-0219",
+                issued_by=None,
+                issue_date="2026-11-16",
+                effective_date=None,
+                subject="",
+                class_hint=None,
+                holders=[],
+                models=[],
+                documents=[],
+                url="",
+            ),
+        ]
+        self.assertEqual(recorded_window_end(rows, date(2026, 9, 18)), date(2026, 11, 16))
+        self.assertEqual(recorded_window_end([], date(2026, 9, 18)), date(2026, 9, 18))
 
     def test_combined_family_label_is_split(self) -> None:
         html = """

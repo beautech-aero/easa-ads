@@ -31,8 +31,13 @@ from easa_ads.normalize import clean, document_kind, drop_category_labels, parse
 # The archive's newest SIB or AD can be a few weeks behind a publication
 # that was issued just before it. Look that far back so those are not missed.
 LOOKBACK_DAYS = 21
-# A date-filtered search covering a few weeks is a few hundred rows at most.
-# Anything larger means the filter was ignored and the full catalogue came back.
+# A frozen archive must not stretch the search back through the whole
+# catalogue. Beyond this, biweekly files and the archive are the record.
+MAX_WINDOW_DAYS = 120
+# A quiet day is a handful of publications. The cap scales with the window
+# so a long lag is not mistaken for a broken date filter, and a response
+# the size of the full catalogue still fails.
+ROWS_PER_DAY = 12
 MAX_ROWS = 400
 _EMPTY = "Sorry, no results found for your query."
 _DISPLAY = re.compile(
@@ -66,11 +71,33 @@ class ToolPage:
 
 
 def listing_window(archive_ad_max: date, archive_sib_max: date, today: date) -> tuple[date, date]:
-    """Issue-date window that covers the archive lag and the open fortnight."""
+    """Issue-date window that covers the archive lag and the open fortnight.
+
+    The start is never more than ``MAX_WINDOW_DAYS`` before today. The search
+    itself still runs through today. That clock value is not what gets written
+    to disk; ``recorded_window_end`` is.
+    """
     start = min(archive_ad_max, archive_sib_max) - timedelta(days=LOOKBACK_DAYS)
+    earliest = today - timedelta(days=MAX_WINDOW_DAYS)
+    if start < earliest:
+        start = earliest
     if start > today:
         return today, today
     return start, today
+
+
+def row_cap_for_window(start: date, end: date) -> int:
+    """How many tool rows a window of this length may return before we fail."""
+    days = max((end - start).days, 1)
+    return max(MAX_ROWS, days * ROWS_PER_DAY)
+
+
+def recorded_window_end(publications: list[ToolPublication], fallback: date) -> date:
+    """Newest issue date in the kept rows, so a quiet day does not change the files."""
+    dates = [item.issue_date for item in publications if item.issue_date]
+    if not dates:
+        return fallback
+    return date.fromisoformat(max(dates))
 
 
 def is_newer_than_archive(issue_date: str | None, archive_date: str | None) -> bool:
@@ -100,6 +127,7 @@ def fetch_recent_publications(
         client,
         lambda page: _search_url(start, end, page),
         empty_is_error=(end - start).days >= 7,
+        row_cap=row_cap_for_window(start, end),
     )
     outside = [
         item.number
@@ -202,7 +230,13 @@ def parse_tool_page(html: str) -> ToolPage:
     )
 
 
-def _read_pages(client: HttpClient, url_for_page, *, empty_is_error: bool) -> list[ToolPublication]:
+def _read_pages(
+    client: HttpClient,
+    url_for_page,
+    *,
+    empty_is_error: bool,
+    row_cap: int = MAX_ROWS,
+) -> list[ToolPublication]:
     first = parse_tool_page(client.get(url_for_page(1)).body.decode("utf-8", "replace"))
     if first.empty:
         if empty_is_error:
@@ -214,10 +248,10 @@ def _read_pages(client: HttpClient, url_for_page, *, empty_is_error: bool) -> li
         raise RuntimeError(
             f"Safety Publications Tool results start at record {first.range_from}, not 1"
         )
-    if first.total > MAX_ROWS:
+    if first.total > row_cap:
         raise RuntimeError(
             f"Safety Publications Tool reported {first.total} rows, "
-            f"above the {MAX_ROWS}-row cap; the date filter may have been ignored"
+            f"above the {row_cap}-row cap; the date filter may have been ignored"
         )
     page_size = first.range_to - first.range_from + 1
     if page_size < 1:
