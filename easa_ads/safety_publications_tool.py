@@ -11,8 +11,9 @@ Each row has the publication number, a state-of-design flag, the issue date,
 a class icon when the row is not an ordinary AD, the subject, the
 holder/type/model tree, the effective date, and attachment links.
 
-Rows already in the archive at the same issue date are not kept. A same-day
-tool row must not replace the archive's model list.
+A tool row dated the same day as the archive is still kept, so its
+state-of-design code and PDF link are merged. The archive keeps the subject
+and the model list on that tie.
 """
 
 from __future__ import annotations
@@ -25,7 +26,7 @@ from urllib.parse import urlencode
 
 from easa_ads.const import ALL_CLASSES, SD_LIST_URL, TOOL_ORIGIN, TOOL_SEARCH_URL
 from easa_ads.http import HttpClient
-from easa_ads.normalize import clean, document_kind, drop_category_labels, parse_date
+from easa_ads.normalize import clean, document_kind, drop_category_labels, parse_date, split_model_labels
 
 # The archive's newest SIB or AD can be a few weeks behind a publication
 # that was issued just before it. Look that far back so those are not missed.
@@ -73,12 +74,16 @@ def listing_window(archive_ad_max: date, archive_sib_max: date, today: date) -> 
 
 
 def is_newer_than_archive(issue_date: str | None, archive_date: str | None) -> bool:
-    """True when the tool row is absent from the archive or revises it."""
+    """True when the tool row is absent from the archive or at least as new.
+
+    An equal issue date is kept. Merge still prefers the archive subject and
+    models on that tie, and adds the tool's state-of-design code and documents.
+    """
     if not archive_date:
         return True
     if not issue_date:
         return False
-    return issue_date > archive_date
+    return issue_date >= archive_date
 
 
 def fetch_recent_publications(
@@ -359,6 +364,7 @@ def _filename(url: str) -> str:
 
 def _holders_and_models(events: list[tuple]) -> tuple[list[str], list[str]]:
     holders, models = _tree(events)
+    models = split_model_labels(models)
     cleaned_holders, cleaned_models = drop_category_labels(holders, models)
     # An SD whose only tokens are the category labels still names them.
     # Dropping those leaves an empty designation, which the archive does not.

@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import json
+import tempfile
 import unittest
 from datetime import date
 from pathlib import Path
@@ -11,6 +13,7 @@ from easa_ads.biweekly import (
     parse_biweekly_index,
     parse_csv,
     select_periods,
+    stored_biweekly_gaps,
 )
 from easa_ads.normalize import document_kind
 from easa_ads.safety_publications_tool import (
@@ -61,6 +64,53 @@ class BiweeklyIndexTests(unittest.TestCase):
             overlap_days=30,
         )
         self.assertEqual([period.period for period in chosen], [22, 23])
+
+    def test_stored_gap_is_kept_and_a_covered_period_is_not(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            self._write_period(root, "010_2026-04-06_2026-04-19", 10, "2026-04-06", "2026-04-19", "ONLY-1")
+            self._write_period(root, "011_2026-04-20_2026-05-03", 11, "2026-04-20", "2026-05-03", "IN-ARCHIVE")
+            kept = stored_biweekly_gaps(
+                root,
+                archive_ids={"IN-ARCHIVE"},
+                covered={(11, "2026-04-20", "2026-05-03")},
+            )
+            # Period 11 is covered by a fresh download, so it is left to that download.
+            # Re-run without covering it: every row is already in the archive, so it is dropped.
+            self.assertEqual([item["period"].period for item in kept], [10])
+            self.assertEqual(kept[0]["rows"][0].number, "ONLY-1")
+            dropped = stored_biweekly_gaps(root, archive_ids={"IN-ARCHIVE", "ONLY-1"}, covered=set())
+            self.assertEqual(dropped, [])
+
+    def _write_period(
+        self,
+        root: Path,
+        name: str,
+        period: int,
+        date_from: str,
+        date_to: str,
+        number: str,
+    ) -> None:
+        directory = root / name
+        directory.mkdir()
+        member = f"easa_biweekly_{period}-2026.csv"
+        (directory / member).write_text(
+            f'"{number}";"2026-04-10";"HOLDER";"MODEL";"Subject"\n',
+            encoding="utf-8",
+        )
+        (directory / "manifest.json").write_text(
+            json.dumps(
+                {
+                    "period": period,
+                    "from": date_from,
+                    "to": date_to,
+                    "csv": {"url": "https://ad.easa.europa.eu/x.csv", "label": "CSV", "member": member},
+                    "html": {"url": "https://ad.easa.europa.eu/x.html", "label": "HTML"},
+                    "pdf": {"url": "https://ad.easa.europa.eu/x.pdf", "label": "PDF"},
+                }
+            ),
+            encoding="utf-8",
+        )
 
     def test_stale_index_fails(self) -> None:
         page = parse_biweekly_index((FIXTURES / "biweekly-index.html").read_text(encoding="utf-8"))
@@ -122,8 +172,38 @@ class ToolPageTests(unittest.TestCase):
     def test_newer_than_archive(self) -> None:
         self.assertTrue(is_newer_than_archive("2026-11-16", None))
         self.assertTrue(is_newer_than_archive("2026-11-16", "2026-11-05"))
-        self.assertFalse(is_newer_than_archive("2026-11-05", "2026-11-05"))
+        self.assertTrue(is_newer_than_archive("2026-11-05", "2026-11-05"))
+        self.assertFalse(is_newer_than_archive("2026-11-04", "2026-11-05"))
         self.assertFalse(is_newer_than_archive(None, "2026-11-05"))
+
+    def test_combined_family_label_is_split(self) -> None:
+        html = """
+        <h3>Displaying records 1 to 1 out of a total of 1 publications.</h3>
+        <table class="ad-list">
+        <tr><th>Number</th><th>Issued by</th><th>Issue date</th><th>Subject</th>
+            <th>Approval Holder / Type Designation</th><th>Effective date</th><th>Attachment</th></tr>
+        <tr>
+            <td><a href="https://ad.easa.europa.eu/ad/2026-0211">2026-0211</a></td>
+            <td><img src="https://ad.easa.europa.eu/static/img/flags/eu.gif" alt="EU"></td>
+            <td>2026-11-04</td>
+            <td>Fire Protection – Inspection</td>
+            <td><ul class="aircraft-tree">
+                <li class="tc_holder">AIRBUS HELICOPTERS<ul>
+                    <li class="type">SA 330 / AS 332 / EC 225<ul>
+                        <li class="model">CFM56-7B20/2</li>
+                    </ul></li>
+                </ul></li>
+            </ul></td>
+            <td></td>
+            <td><a href="https://ad.easa.europa.eu/blob/EASA_AD_2026_0211.pdf/AD_2026-0211_1">1 kb</a></td>
+        </tr>
+        </table>
+        """
+        page = parse_tool_page(html)
+        self.assertEqual(
+            page.publications[0].models,
+            ["SA 330", "AS 332", "EC 225", "CFM56-7B20/2"],
+        )
 
 
 class DocumentKindTests(unittest.TestCase):

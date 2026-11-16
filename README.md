@@ -16,15 +16,15 @@ The publications are:
 | --- | --- | --- |
 | [AD archive export](https://www.easa.europa.eu/en/datasets/144347/export/json) | One JSON document, every AD. Paging parameters are ignored. | Raw file kept. Each row becomes a record. |
 | [SIB and SD archive export](https://www.easa.europa.eu/en/datasets/144348/export/json) | Same seven columns. `AD class` is `SIB` or `SD`. | Raw file kept. Filed by class. |
-| [Biweekly index](https://ad.easa.europa.eu/biweekly) | One row per fortnight, with CSV, HTML, and PDF links. Year pages use `?year=`. | Fortnights that still overlap the archive (about the last 90 days) are kept. The index must list a CSV, and the newest fortnight must have ended within 28 days. |
+| [Biweekly index](https://ad.easa.europa.eu/biweekly) | One row per fortnight, with CSV, HTML, and PDF links. Year pages use `?year=`. | Fortnights that still overlap the archive (about the last 90 days) are downloaded. A stored fortnight is kept after that if any of its publications are still missing from the archive. The index must list a CSV, and the newest fortnight must have ended within 28 days. |
 | Biweekly CSV linked from that index | Semicolon-separated listing for a fortnight. No header and no class column. The file is plain text. | CSV is committed and parsed. The HTML and PDF of the same list are not downloaded; their URLs are in the period manifest. |
-| [Safety Publications Tool](https://ad.easa.europa.eu/) | The live publication list. A date-filtered search returns ADs and SIBs; safety directives are a separate short list. | Rows in a window that starts 21 days before the older of the archive's newest AD and newest SIB. A row already in the archive at the same issue date is not kept. The result table supplies the class icon, holder/type/model tree, dates, and PDF link. |
+| [Safety Publications Tool](https://ad.easa.europa.eu/) | The live publication list. A date-filtered search returns ADs and SIBs; safety directives are a separate short list. | Rows in a window that starts 21 days before the older of the archive's newest AD and newest SIB, including rows the archive already has on the same day. On that tie the archive keeps the subject and the models; the tool adds the state-of-design code and the PDF link. A newer tool row supplies the models. Combined family labels such as `SA 330 / AS 332 / EC 225` are split on `/`. |
 
 The [interim page](https://www.easa.europa.eu/en/domains/aircraft-products/airworthiness-directives-ad/safety-publications-tool-interim-solution) was retired in November 2026. It now only says the tool is back online. Ingest does not fetch it. Records from the live tool still use `source: "interim"`, which is the detailed list that page used to be.
 
 Archive PDFs are not stored. Each record keeps the document URL.
 
-When the same publication number appears in more than one source, one record is kept. The latest issue date supplies the subject. On a tie the archive wins, because that is where EASA records “SUPERSEDED BY”. Model lists prefer the archive or the tool listing over the one-line biweekly summary.
+When the same publication number appears in more than one source, one record is kept. The latest issue date supplies the subject and the model list. On a tie the archive wins, because that is where EASA records “SUPERSEDED BY”. A same-date tool row still adds its state-of-design code and document links.
 
 ## Layout
 

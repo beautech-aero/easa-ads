@@ -12,11 +12,13 @@ from __future__ import annotations
 
 import csv
 import io
+import json
 import re
 import zipfile
 from dataclasses import dataclass, field
 from datetime import date, timedelta
 from html.parser import HTMLParser
+from pathlib import Path
 
 from easa_ads.const import BIWEEKLY_INDEX_URL, TOOL_ORIGIN
 from easa_ads.http import HttpClient
@@ -230,6 +232,67 @@ def select_periods(
         )
     chosen.sort(key=lambda period: (period.date_from, period.period))
     return chosen
+
+
+def stored_biweekly_gaps(
+    root: Path,
+    *,
+    archive_ids: set[str],
+    covered: set[tuple[int, str, str]],
+) -> list[dict]:
+    """Return stored fortnights that still contain a publication the archive lacks.
+
+    Fresh downloads cover the recent window. An older fortnight is kept when
+    deleting it would drop a number that never reached the archive.
+    """
+    if not root.is_dir():
+        return []
+    kept: list[dict] = []
+    for directory in sorted(path for path in root.iterdir() if path.is_dir()):
+        manifest_path = directory / "manifest.json"
+        if not manifest_path.is_file():
+            continue
+        try:
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            period_no = int(manifest["period"])
+            date_from = str(manifest["from"])
+            date_to = str(manifest["to"])
+            csv_meta = manifest["csv"]
+            member = str(csv_meta["member"])
+        except (KeyError, TypeError, ValueError, json.JSONDecodeError) as exc:
+            raise ValueError(f"{directory.name} manifest cannot be read") from exc
+        key = (period_no, date_from, date_to)
+        if key in covered:
+            continue
+        csv_path = directory / member
+        if not csv_path.is_file():
+            raise ValueError(f"{directory.name} is missing {member}")
+        blob = csv_path.read_bytes()
+        rows = parse_csv(blob, filename=member)
+        if all(row.number in archive_ids for row in rows):
+            continue
+        html = manifest.get("html") or {}
+        pdf = manifest.get("pdf") or {}
+        kept.append(
+            {
+                "period": BiweeklyPeriod(
+                    period=period_no,
+                    date_from=date_from,
+                    date_to=date_to,
+                    csv_url=str(csv_meta.get("url") or ""),
+                    csv_label=str(csv_meta.get("label") or "CSV"),
+                    html_url=str(html.get("url") or ""),
+                    html_label=str(html.get("label") or "HTML"),
+                    pdf_url=str(pdf.get("url") or ""),
+                    pdf_label=str(pdf.get("label") or "PDF"),
+                ),
+                "member": member,
+                "csv_bytes": blob,
+                "rows": rows,
+                "zip_filename": csv_meta.get("zip_filename"),
+            }
+        )
+    return kept
 
 
 def fetch_biweekly_periods(

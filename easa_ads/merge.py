@@ -8,10 +8,10 @@ list (stored as source ``interim``, the role the retired interim page had)
 covers documents issued after that fortnight, and its model tree is detailed.
 
 For a number that appears more than once, the latest issue date supplies
-the subject and dates. On a tie the archive wins, then the interim page,
-then a biweekly file. Models come from the latest archive or interim row
-that actually lists them, so a one-token biweekly summary does not wipe a
-full model list dated the same day.
+the subject and dates. On a tie the archive wins, then the tool listing,
+then a biweekly file. On that tie the archive also keeps the model list.
+A newer tool row still supplies models. A same-date tool row still adds
+its state-of-design code and document links.
 """
 
 from __future__ import annotations
@@ -113,8 +113,8 @@ def _choose_holders_and_models(contributions: list[dict]) -> tuple[list[str], li
         pool,
         key=lambda record: (
             record["issue_date"] or "",
-            len(record["models"]),
             1 if record["source"] == "archive" else 0,
+            len(record["models"]),
             record.get("_period") or 0,
         ),
     )

@@ -14,7 +14,12 @@ from collections import Counter
 from datetime import date
 from pathlib import Path
 
-from easa_ads.biweekly import fetch_biweekly_periods, load_biweekly_download, parse_csv
+from easa_ads.biweekly import (
+    fetch_biweekly_periods,
+    load_biweekly_download,
+    parse_csv,
+    stored_biweekly_gaps,
+)
 from easa_ads.const import (
     ARCHIVE_AD_PAGE,
     ARCHIVE_AD_URL,
@@ -103,6 +108,24 @@ def ingest(data_dir: Path, client: HttpClient) -> dict:
                 "zip_filename": _content_filename(fetched.headers),
             }
         )
+
+    covered = {
+        (item["period"].period, item["period"].date_from, item["period"].date_to)
+        for item in biweekly_files
+    }
+    retained = stored_biweekly_gaps(
+        data_dir / "raw" / "biweekly",
+        archive_ids=set(archive_dates),
+        covered=covered,
+    )
+    for item in retained:
+        period = item["period"]
+        print(
+            f"Keeping stored biweekly {period.period} "
+            f"({period.date_from} to {period.date_to}); the archive does not list every row"
+        )
+    biweekly_files.extend(retained)
+    biweekly_files.sort(key=lambda item: (item["period"].date_from, item["period"].period))
 
     start, end = listing_window(date.fromisoformat(ad_max), date.fromisoformat(sib_max), today)
     recent = fetch_recent_publications(client, start=start, end=end)

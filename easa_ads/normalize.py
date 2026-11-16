@@ -456,6 +456,25 @@ def rejoin_variant_suffixes(tokens: list[str]) -> list[str]:
     return joined
 
 
+def split_model_labels(labels: list[str]) -> list[str]:
+    """Split a combined family label on ``/``, then restore real suffixes.
+
+    ``SA 330 / AS 332 / EC 225`` becomes three tokens. ``CFM56-7B20/2``
+    stays one token, because ``2`` is a variant suffix rather than a model.
+    """
+    tokens: list[str] = []
+    for label in labels:
+        pieces = [clean(piece) for piece in label.split("/") if clean(piece)]
+        tokens.extend(pieces or [label])
+    seen: set[str] = set()
+    result: list[str] = []
+    for value in rejoin_variant_suffixes(tokens):
+        if value and value not in seen:
+            seen.add(value)
+            result.append(value)
+    return result
+
+
 def _drop_sib_categories(tokens: list[str]) -> list[str]:
     kept: list[str] = []
     for token in tokens:

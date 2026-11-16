@@ -23,7 +23,7 @@ from easa_ads.normalize import (
     document_kind,
     drop_category_labels,
     parse_date,
-    rejoin_variant_suffixes,
+    split_model_labels,
 )
 
 _VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "wbr"}
@@ -348,11 +348,7 @@ def _holders_and_models(events: list[tuple]) -> tuple[list[str], list[str]]:
 
 def _split_model_labels(labels: list[str]) -> list[str]:
     """Split family labels that still contain the archive's slash separator."""
-    tokens: list[str] = []
-    for label in labels:
-        pieces = [clean(piece) for piece in label.split("/") if clean(piece)]
-        tokens.extend(pieces or [label])
-    return _unique(rejoin_variant_suffixes(tokens))
+    return split_model_labels(labels)
 
 
 def _unique(values: list[str]) -> list[str]:

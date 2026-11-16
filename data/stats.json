@@ -109,7 +109,7 @@
     "interim_page": {
       "url": "https://ad.easa.europa.eu/",
       "last_updated_raw": null,
-      "records": 46,
+      "records": 106,
       "issue_date_min": "2026-09-18",
       "issue_date_max": "2026-11-16",
       "biweekly_periods": 8,
@@ -166,11 +166,11 @@
     }
   },
   "overlap": {
-    "in_all_three": 1,
+    "in_all_three": 47,
     "in_archive_and_biweekly": 120,
-    "in_archive_and_interim": 1,
-    "in_biweekly_and_interim": 23,
-    "only_archive": 18309,
+    "in_archive_and_interim": 61,
+    "in_biweekly_and_interim": 69,
+    "only_archive": 18295,
     "only_biweekly": 4,
     "only_interim": 23
   }
