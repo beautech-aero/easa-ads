@@ -87,6 +87,7 @@
 {"model":"210M","ids":["AIR-21-16"]}
 {"model":"210N","ids":["AIR-21-16"]}
 {"model":"210R","ids":["AIR-21-16"]}
+{"model":"22","ids":["SAIB-2026-19"]}
 {"model":"23","ids":["SAIB-2026-07"]}
 {"model":"24","ids":["SAIB-2026-07"]}
 {"model":"247F","ids":["SAIB-2025-10"]}
@@ -187,10 +188,12 @@
 {"model":"402B","ids":["AIR-21-20","CE-13-27R1"]}
 {"model":"402C","ids":["AIR-21-20","CE-13-27R1"]}
 {"model":"407","ids":["CASA-2025-02"]}
+{"model":"41","ids":["SAIB-2026-19"]}
 {"model":"411","ids":["AIR-21-20","CE-13-27R1"]}
 {"model":"411A","ids":["AIR-21-20","CE-13-27R1"]}
 {"model":"414","ids":["AIR-21-20","CE-13-27R1"]}
 {"model":"414A","ids":["AIR-21-20","CE-13-27R1"]}
+{"model":"42 (Corvalis)","ids":["SAIB-2026-19"]}
 {"model":"421","ids":["AIR-21-20","CE-13-27R1"]}
 {"model":"421A","ids":["AIR-21-20","CE-13-27R1"]}
 {"model":"421B","ids":["AIR-21-20","CE-13-27R1"]}
@@ -762,6 +765,8 @@
 {"model":"LA-4A","ids":["SAIB-2024-02"]}
 {"model":"LA-4P","ids":["SAIB-2024-02"]}
 {"model":"LAKE 250","ids":["SAIB-2024-02"]}
+{"model":"LC40","ids":["SAIB-2026-19"]}
+{"model":"LC41-550FG (Cessna 400)","ids":["SAIB-2026-19"]}
 {"model":"LEAP-1A/-1C","ids":["2025-06R1"]}
 {"model":"LEAP-1A23","ids":["2025-06R1"]}
 {"model":"LEAP-1A24","ids":["2025-06R1"]}
@@ -1001,6 +1006,8 @@
 {"model":"SA26-T","ids":["SAIB-2026-14"]}
 {"model":"Sailplane Towing Couplings","ids":["2024-11"]}
 {"model":"Seat Belts","ids":["SAIB-2026-10R1"]}
+{"model":"SR20","ids":["SAIB-2026-19"]}
+{"model":"SR22","ids":["SAIB-2026-19"]}
 {"model":"STC EASA.IM.A.S.00601","ids":["CE-16-07"]}
 {"model":"STC EASA.IM.A.S.01058","ids":["CE-16-07"]}
 {"model":"STC EASA.IM.A.S.01423","ids":["SAIB-2025-02"]}

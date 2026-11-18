@@ -3,7 +3,7 @@
   "last_updated_raw": null,
   "window": {
     "from": "2026-09-18",
-    "to": "2026-11-16"
+    "to": "2026-11-17"
   },
   "biweekly": [
     {
@@ -97,6 +97,62 @@
   ],
   "publications": [
     {
+      "number": "SAIB-2026-19",
+      "url": "https://ad.easa.europa.eu/ad/SAIB-2026-19",
+      "issued_by": "US",
+      "issue_date": "2026-11-17",
+      "effective_date": null,
+      "subject": "Braking System",
+      "class_hint": "SIB",
+      "approval_holders": [
+        "CIRRUS DESIGN CORPORATION",
+        "TEXTRON AVIATION INC."
+      ],
+      "models": [
+        "SR20",
+        "22",
+        "SR22",
+        "LC40",
+        "41",
+        "42 (Corvalis)",
+        "LC41-550FG (Cessna 400)"
+      ],
+      "documents": [
+        {
+          "url": "https://ad.easa.europa.eu/blob/SAIB-2026-19.pdf/SIB_SAIB-2026-19_1",
+          "label": "SAIB-2026-19.pdf",
+          "kind": "pdf"
+        }
+      ]
+    },
+    {
+      "number": "26-139",
+      "url": "https://ad.easa.europa.eu/ad/26-139",
+      "issued_by": "EU",
+      "issue_date": "2026-11-17",
+      "effective_date": null,
+      "subject": "Lights – Sidewall Lights – Inspection / Modification",
+      "class_hint": "PAD",
+      "approval_holders": [
+        "AIR FRANCE",
+        "BOEING"
+      ],
+      "models": [
+        "EASA STC 10072189",
+        "EASA STC 10081045",
+        "EASA STC 10086734",
+        "777",
+        "777-300ER"
+      ],
+      "documents": [
+        {
+          "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_139.pdf/PAD_26-139_1",
+          "label": "EASA_PAD_26_139.pdf",
+          "kind": "pdf"
+        }
+      ]
+    },
+    {
       "number": "BEA-2026-07",
       "url": "https://ad.easa.europa.eu/ad/BEA-2026-07",
       "issued_by": "BR",
@@ -167,117 +223,6 @@
           "url": "https://ad.easa.europa.eu/blob/EASA_AD_2026_0219.pdf/AD_2026-0219_1",
           "label": "EASA_AD_2026_0219.pdf",
           "kind": "pdf"
-        }
-      ]
-    },
-    {
-      "number": "G-2026-0006",
-      "url": "https://ad.easa.europa.eu/ad/G-2026-0006",
-      "issued_by": "UK",
-      "issue_date": "2026-11-13",
-      "effective_date": "2026-11-24",
-      "subject": "Navigation – Traffic Collision Avoidance System – Modification",
-      "class_hint": null,
-      "approval_holders": [
-        "BAE SYSTEMS (OPERATIONS) LTD",
-        "STC TWENTY ONE LIMITED"
-      ],
-      "models": [
-        "AVRO146RJ",
-        "85A",
-        "EASA STC A.S.02766"
-      ],
-      "documents": [
-        {
-          "url": "https://ad.easa.europa.eu/blob/G-2026-0006.pdf/AD_G-2026-0006_1",
-          "label": "G-2026-0006.pdf",
-          "kind": "pdf"
-        }
-      ]
-    },
-    {
-      "number": "26-138",
-      "url": "https://ad.easa.europa.eu/ad/26-138",
-      "issued_by": "EU",
-      "issue_date": "2026-11-13",
-      "effective_date": null,
-      "subject": "Powerplant – Engine Mounts – Inspection",
-      "class_hint": "PAD",
-      "approval_holders": [
-        "AIRBUS S.A.S."
-      ],
-      "models": [
-        "A330",
-        "A330-201",
-        "A330-202",
-        "A330-203",
-        "A330-301",
-        "A330-302",
-        "A330-303"
-      ],
-      "documents": [
-        {
-          "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_138.pdf/PAD_26-138_1",
-          "label": "EASA_PAD_26_138.pdf",
-          "kind": "pdf"
-        }
-      ]
-    },
-    {
-      "number": "SAIB-2026-18",
-      "url": "https://ad.easa.europa.eu/ad/SAIB-2026-18",
-      "issued_by": "US",
-      "issue_date": "2026-11-13",
-      "effective_date": null,
-      "subject": "Nose/Tail Landing Gear",
-      "class_hint": "SIB",
-      "approval_holders": [
-        "AeroControlex Division",
-        "BOEING"
-      ],
-      "models": [
-        "FAA STC ST01255CH",
-        "737",
-        "737-100",
-        "737-200",
-        "737-300",
-        "737-400",
-        "737-500"
-      ],
-      "documents": [
-        {
-          "url": "https://ad.easa.europa.eu/blob/SAIB-2026-18.pdf/SIB_SAIB-2026-18_1",
-          "label": "SAIB-2026-18.pdf",
-          "kind": "pdf"
-        }
-      ]
-    },
-    {
-      "number": "2026-0218",
-      "url": "https://ad.easa.europa.eu/ad/2026-0218",
-      "issued_by": "EU",
-      "issue_date": "2026-11-13",
-      "effective_date": "2026-11-27",
-      "subject": "Time Limits / Maintenance Checks – Damage Tolerant Airworthiness Limitation Items Part 2 – Amendment",
-      "class_hint": null,
-      "approval_holders": [
-        "AIRBUS S.A.S."
-      ],
-      "models": [
-        "A350",
-        "A350-1041",
-        "A350-941"
-      ],
-      "documents": [
-        {
-          "url": "https://ad.easa.europa.eu/blob/EASA_AD_2026_0218.pdf/AD_2026-0218_1",
-          "label": "EASA_AD_2026_0218.pdf",
-          "kind": "pdf"
-        },
-        {
-          "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_122.zip/AD_2026-0218_2",
-          "label": "EASA_PAD_26_122.zip",
-          "kind": "zip"
         }
       ]
     },
@@ -452,6 +397,117 @@
       ]
     },
     {
+      "number": "SAIB-2026-18",
+      "url": "https://ad.easa.europa.eu/ad/SAIB-2026-18",
+      "issued_by": "US",
+      "issue_date": "2026-11-13",
+      "effective_date": null,
+      "subject": "Nose/Tail Landing Gear",
+      "class_hint": "SIB",
+      "approval_holders": [
+        "AeroControlex Division",
+        "BOEING"
+      ],
+      "models": [
+        "FAA STC ST01255CH",
+        "737",
+        "737-100",
+        "737-200",
+        "737-300",
+        "737-400",
+        "737-500"
+      ],
+      "documents": [
+        {
+          "url": "https://ad.easa.europa.eu/blob/SAIB-2026-18.pdf/SIB_SAIB-2026-18_1",
+          "label": "SAIB-2026-18.pdf",
+          "kind": "pdf"
+        }
+      ]
+    },
+    {
+      "number": "G-2026-0006",
+      "url": "https://ad.easa.europa.eu/ad/G-2026-0006",
+      "issued_by": "UK",
+      "issue_date": "2026-11-13",
+      "effective_date": "2026-11-24",
+      "subject": "Navigation – Traffic Collision Avoidance System – Modification",
+      "class_hint": null,
+      "approval_holders": [
+        "BAE SYSTEMS (OPERATIONS) LTD",
+        "STC TWENTY ONE LIMITED"
+      ],
+      "models": [
+        "AVRO146RJ",
+        "85A",
+        "EASA STC A.S.02766"
+      ],
+      "documents": [
+        {
+          "url": "https://ad.easa.europa.eu/blob/G-2026-0006.pdf/AD_G-2026-0006_1",
+          "label": "G-2026-0006.pdf",
+          "kind": "pdf"
+        }
+      ]
+    },
+    {
+      "number": "2026-0218",
+      "url": "https://ad.easa.europa.eu/ad/2026-0218",
+      "issued_by": "EU",
+      "issue_date": "2026-11-13",
+      "effective_date": "2026-11-27",
+      "subject": "Time Limits / Maintenance Checks – Damage Tolerant Airworthiness Limitation Items Part 2 – Amendment",
+      "class_hint": null,
+      "approval_holders": [
+        "AIRBUS S.A.S."
+      ],
+      "models": [
+        "A350",
+        "A350-1041",
+        "A350-941"
+      ],
+      "documents": [
+        {
+          "url": "https://ad.easa.europa.eu/blob/EASA_AD_2026_0218.pdf/AD_2026-0218_1",
+          "label": "EASA_AD_2026_0218.pdf",
+          "kind": "pdf"
+        },
+        {
+          "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_122.zip/AD_2026-0218_2",
+          "label": "EASA_PAD_26_122.zip",
+          "kind": "zip"
+        }
+      ]
+    },
+    {
+      "number": "26-138",
+      "url": "https://ad.easa.europa.eu/ad/26-138",
+      "issued_by": "EU",
+      "issue_date": "2026-11-13",
+      "effective_date": null,
+      "subject": "Powerplant – Engine Mounts – Inspection",
+      "class_hint": "PAD",
+      "approval_holders": [
+        "AIRBUS S.A.S."
+      ],
+      "models": [
+        "A330",
+        "A330-201",
+        "A330-202",
+        "A330-203",
+        "A330-301",
+        "A330-302",
+        "A330-303"
+      ],
+      "documents": [
+        {
+          "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_138.pdf/PAD_26-138_1",
+          "label": "EASA_PAD_26_138.pdf",
+          "kind": "pdf"
+        }
+      ]
+    },
+    {
       "number": "2026-0217",
       "url": "https://ad.easa.europa.eu/ad/2026-0217",
       "issued_by": "EU",
@@ -566,52 +622,58 @@
       ]
     },
     {
-      "number": "US-2026-21-08",
-      "url": "https://ad.easa.europa.eu/ad/US-2026-21-08",
-      "issued_by": "US",
+      "number": "26-136",
+      "url": "https://ad.easa.europa.eu/ad/26-136",
+      "issued_by": "EU",
       "issue_date": "2026-11-11",
-      "effective_date": "2026-12-01",
-      "subject": "Wings - Left- and Right-Side Form-in-Place Gasket - Inspection",
-      "class_hint": null,
+      "effective_date": null,
+      "subject": "Time Limits / Maintenance Checks – Time Limits Manual / Maintenance Programme – Amendment",
+      "class_hint": "PAD",
       "approval_holders": [
-        "BOEING"
+        "ROLLS-ROYCE DEUTSCHLAND Ltd & Co KG"
       ],
       "models": [
-        "737",
-        "737-700",
-        "737-700C",
-        "737-800",
-        "737-900ER"
+        "TRENT 1000",
+        "Trent 1000-AE3",
+        "Trent 1000-CE3",
+        "Trent 1000-D3",
+        "Trent 1000-G3",
+        "Trent 1000-H3",
+        "Trent 1000-J3",
+        "Trent 1000-K3",
+        "Trent 1000-L3",
+        "Trent 1000-M3",
+        "Trent 1000-N3",
+        "Trent 1000-P3",
+        "Trent 1000-Q3",
+        "Trent 1000-R3"
       ],
       "documents": [
         {
-          "url": "https://ad.easa.europa.eu/blob/2026-21-08.pdf/AD_US-2026-21-08_1",
-          "label": "2026-21-08.pdf",
+          "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_136.pdf/PAD_26-136_1",
+          "label": "EASA_PAD_26_136.pdf",
           "kind": "pdf"
         }
       ]
     },
     {
-      "number": "US-2026-21-07",
-      "url": "https://ad.easa.europa.eu/ad/US-2026-21-07",
-      "issued_by": "US",
+      "number": "26-134",
+      "url": "https://ad.easa.europa.eu/ad/26-134",
+      "issued_by": "EU",
       "issue_date": "2026-11-11",
-      "effective_date": "2026-12-01",
-      "subject": "Wings - Left- and Right-Side Form-in-Place Gasket - Inspection",
-      "class_hint": null,
+      "effective_date": null,
+      "subject": "Rotorcraft Flight Manual – Limitations and Normal Procedures Section – Amendment",
+      "class_hint": "PAD",
       "approval_holders": [
-        "BOEING"
+        "AIRBUS HELICOPTERS"
       ],
       "models": [
-        "737",
-        "737-8 (MAX)",
-        "737-8200 (MAX)",
-        "737-9 (MAX)"
+        "EC175"
       ],
       "documents": [
         {
-          "url": "https://ad.easa.europa.eu/blob/2026-21-07.pdf/AD_US-2026-21-07_1",
-          "label": "2026-21-07.pdf",
+          "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_134.pdf/PAD_26-134_1",
+          "label": "EASA_PAD_26_134.pdf",
           "kind": "pdf"
         }
       ]
@@ -743,59 +805,125 @@
       ]
     },
     {
-      "number": "26-134",
-      "url": "https://ad.easa.europa.eu/ad/26-134",
-      "issued_by": "EU",
+      "number": "US-2026-21-07",
+      "url": "https://ad.easa.europa.eu/ad/US-2026-21-07",
+      "issued_by": "US",
       "issue_date": "2026-11-11",
-      "effective_date": null,
-      "subject": "Rotorcraft Flight Manual – Limitations and Normal Procedures Section – Amendment",
-      "class_hint": "PAD",
+      "effective_date": "2026-12-01",
+      "subject": "Wings - Left- and Right-Side Form-in-Place Gasket - Inspection",
+      "class_hint": null,
       "approval_holders": [
-        "AIRBUS HELICOPTERS"
+        "BOEING"
       ],
       "models": [
-        "EC175"
+        "737",
+        "737-8 (MAX)",
+        "737-8200 (MAX)",
+        "737-9 (MAX)"
       ],
       "documents": [
         {
-          "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_134.pdf/PAD_26-134_1",
-          "label": "EASA_PAD_26_134.pdf",
+          "url": "https://ad.easa.europa.eu/blob/2026-21-07.pdf/AD_US-2026-21-07_1",
+          "label": "2026-21-07.pdf",
           "kind": "pdf"
         }
       ]
     },
     {
-      "number": "26-136",
-      "url": "https://ad.easa.europa.eu/ad/26-136",
-      "issued_by": "EU",
+      "number": "US-2026-21-08",
+      "url": "https://ad.easa.europa.eu/ad/US-2026-21-08",
+      "issued_by": "US",
       "issue_date": "2026-11-11",
-      "effective_date": null,
-      "subject": "Time Limits / Maintenance Checks – Time Limits Manual / Maintenance Programme – Amendment",
-      "class_hint": "PAD",
+      "effective_date": "2026-12-01",
+      "subject": "Wings - Left- and Right-Side Form-in-Place Gasket - Inspection",
+      "class_hint": null,
       "approval_holders": [
-        "ROLLS-ROYCE DEUTSCHLAND Ltd & Co KG"
+        "BOEING"
       ],
       "models": [
-        "TRENT 1000",
-        "Trent 1000-AE3",
-        "Trent 1000-CE3",
-        "Trent 1000-D3",
-        "Trent 1000-G3",
-        "Trent 1000-H3",
-        "Trent 1000-J3",
-        "Trent 1000-K3",
-        "Trent 1000-L3",
-        "Trent 1000-M3",
-        "Trent 1000-N3",
-        "Trent 1000-P3",
-        "Trent 1000-Q3",
-        "Trent 1000-R3"
+        "737",
+        "737-700",
+        "737-700C",
+        "737-800",
+        "737-900ER"
       ],
       "documents": [
         {
-          "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_136.pdf/PAD_26-136_1",
-          "label": "EASA_PAD_26_136.pdf",
+          "url": "https://ad.easa.europa.eu/blob/2026-21-08.pdf/AD_US-2026-21-08_1",
+          "label": "2026-21-08.pdf",
           "kind": "pdf"
+        }
+      ]
+    },
+    {
+      "number": "2026-0202R1",
+      "url": "https://ad.easa.europa.eu/ad/2026-0202R1",
+      "issued_by": "EU",
+      "issue_date": "2026-11-06",
+      "effective_date": "2026-11-09",
+      "subject": "Stabilizers – Vertical Fin – Inspection / Modification; Placards and Markings – Interior Placards – Installation; Aircraft Flight Manual / Airspeed Limitations – Amendment",
+      "class_hint": null,
+      "approval_holders": [
+        "AIRBUS HELICOPTERS"
+      ],
+      "models": [
+        "AS 350",
+        "EC 130",
+        "AS 350 B3",
+        "AS 355",
+        "AS 355 E",
+        "AS 355 F",
+        "AS 355 F1",
+        "AS 355 F2",
+        "AS 355 N",
+        "AS 355 NP"
+      ],
+      "documents": [
+        {
+          "url": "https://ad.easa.europa.eu/blob/EASA_AD_2026_0202.zip/AD_2026-0202R1_1",
+          "label": "EASA_AD_2026_0202.zip",
+          "kind": "zip"
+        },
+        {
+          "url": "https://ad.easa.europa.eu/blob/EASA_AD_2026_0202R1.pdf/AD_2026-0202R1_2",
+          "label": "EASA_AD_2026_0202R1.pdf",
+          "kind": "pdf"
+        }
+      ]
+    },
+    {
+      "number": "2026-0215",
+      "url": "https://ad.easa.europa.eu/ad/2026-0215",
+      "issued_by": "EU",
+      "issue_date": "2026-11-06",
+      "effective_date": "2026-11-20",
+      "subject": "Oxygen – Oxygen Pressure Regulator – Inspection",
+      "class_hint": null,
+      "approval_holders": [
+        "ATR"
+      ],
+      "models": [
+        "ATR42",
+        "500",
+        "ATR72",
+        "101",
+        "102",
+        "201",
+        "202",
+        "211",
+        "212",
+        "212A"
+      ],
+      "documents": [
+        {
+          "url": "https://ad.easa.europa.eu/blob/EASA_AD_2026_0215.pdf/AD_2026-0215_1",
+          "label": "EASA_AD_2026_0215.pdf",
+          "kind": "pdf"
+        },
+        {
+          "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_119.zip/AD_2026-0215_2",
+          "label": "EASA_PAD_26_119.zip",
+          "kind": "zip"
         }
       ]
     },
@@ -842,78 +970,6 @@
           "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_071.zip/AD_2026-0143R1_2",
           "label": "EASA_PAD_26_071.zip",
           "kind": "zip"
-        }
-      ]
-    },
-    {
-      "number": "2026-0215",
-      "url": "https://ad.easa.europa.eu/ad/2026-0215",
-      "issued_by": "EU",
-      "issue_date": "2026-11-06",
-      "effective_date": "2026-11-20",
-      "subject": "Oxygen – Oxygen Pressure Regulator – Inspection",
-      "class_hint": null,
-      "approval_holders": [
-        "ATR"
-      ],
-      "models": [
-        "ATR42",
-        "500",
-        "ATR72",
-        "101",
-        "102",
-        "201",
-        "202",
-        "211",
-        "212",
-        "212A"
-      ],
-      "documents": [
-        {
-          "url": "https://ad.easa.europa.eu/blob/EASA_AD_2026_0215.pdf/AD_2026-0215_1",
-          "label": "EASA_AD_2026_0215.pdf",
-          "kind": "pdf"
-        },
-        {
-          "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_119.zip/AD_2026-0215_2",
-          "label": "EASA_PAD_26_119.zip",
-          "kind": "zip"
-        }
-      ]
-    },
-    {
-      "number": "2026-0202R1",
-      "url": "https://ad.easa.europa.eu/ad/2026-0202R1",
-      "issued_by": "EU",
-      "issue_date": "2026-11-06",
-      "effective_date": "2026-11-09",
-      "subject": "Stabilizers – Vertical Fin – Inspection / Modification; Placards and Markings – Interior Placards – Installation; Aircraft Flight Manual / Airspeed Limitations – Amendment",
-      "class_hint": null,
-      "approval_holders": [
-        "AIRBUS HELICOPTERS"
-      ],
-      "models": [
-        "AS 350",
-        "EC 130",
-        "AS 350 B3",
-        "AS 355",
-        "AS 355 E",
-        "AS 355 F",
-        "AS 355 F1",
-        "AS 355 F2",
-        "AS 355 N",
-        "AS 355 NP"
-      ],
-      "documents": [
-        {
-          "url": "https://ad.easa.europa.eu/blob/EASA_AD_2026_0202.zip/AD_2026-0202R1_1",
-          "label": "EASA_AD_2026_0202.zip",
-          "kind": "zip"
-        },
-        {
-          "url": "https://ad.easa.europa.eu/blob/EASA_AD_2026_0202R1.pdf/AD_2026-0202R1_2",
-          "label": "EASA_AD_2026_0202R1.pdf",
-          "kind": "pdf"
         }
       ]
     },
@@ -987,31 +1043,6 @@
       ]
     },
     {
-      "number": "2026-0211",
-      "url": "https://ad.easa.europa.eu/ad/2026-0211",
-      "issued_by": "EU",
-      "issue_date": "2026-11-04",
-      "effective_date": "2026-11-18",
-      "subject": "Fire Protection – Pyrotechnical Cartridge – Inspection",
-      "class_hint": null,
-      "approval_holders": [
-        "AIRBUS HELICOPTERS"
-      ],
-      "models": [
-        "SA 330",
-        "AS 332",
-        "EC 225",
-        "SA 330 J"
-      ],
-      "documents": [
-        {
-          "url": "https://ad.easa.europa.eu/blob/EASA_AD_2026_0211.pdf/AD_2026-0211_1",
-          "label": "EASA_AD_2026_0211.pdf",
-          "kind": "pdf"
-        }
-      ]
-    },
-    {
       "number": "26-133",
       "url": "https://ad.easa.europa.eu/ad/26-133",
       "issued_by": "EU",
@@ -1073,31 +1104,27 @@
       ]
     },
     {
-      "number": "2026-0213",
-      "url": "https://ad.easa.europa.eu/ad/2026-0213",
+      "number": "2026-0211",
+      "url": "https://ad.easa.europa.eu/ad/2026-0211",
       "issued_by": "EU",
       "issue_date": "2026-11-04",
       "effective_date": "2026-11-18",
-      "subject": "Fuselage – Mid Avionics Bay – Modification",
+      "subject": "Fire Protection – Pyrotechnical Cartridge – Inspection",
       "class_hint": null,
       "approval_holders": [
-        "AIRBUS CANADA LP"
+        "AIRBUS HELICOPTERS"
       ],
       "models": [
-        "BD-500 (A220 Series)",
-        "BD-500-1A10 (A220-100)",
-        "BD-500-1A11 (A220-300)"
+        "SA 330",
+        "AS 332",
+        "EC 225",
+        "SA 330 J"
       ],
       "documents": [
         {
-          "url": "https://ad.easa.europa.eu/blob/EASA_AD_2026_0213.pdf/AD_2026-0213_1",
-          "label": "EASA_AD_2026_0213.pdf",
+          "url": "https://ad.easa.europa.eu/blob/EASA_AD_2026_0211.pdf/AD_2026-0211_1",
+          "label": "EASA_AD_2026_0211.pdf",
           "kind": "pdf"
-        },
-        {
-          "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_112.zip/AD_2026-0213_2",
-          "label": "EASA_PAD_26_112.zip",
-          "kind": "zip"
         }
       ]
     },
@@ -1124,6 +1151,35 @@
         {
           "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_106.zip/AD_2026-0212_2",
           "label": "EASA_PAD_26_106.zip",
+          "kind": "zip"
+        }
+      ]
+    },
+    {
+      "number": "2026-0213",
+      "url": "https://ad.easa.europa.eu/ad/2026-0213",
+      "issued_by": "EU",
+      "issue_date": "2026-11-04",
+      "effective_date": "2026-11-18",
+      "subject": "Fuselage – Mid Avionics Bay – Modification",
+      "class_hint": null,
+      "approval_holders": [
+        "AIRBUS CANADA LP"
+      ],
+      "models": [
+        "BD-500 (A220 Series)",
+        "BD-500-1A10 (A220-100)",
+        "BD-500-1A11 (A220-300)"
+      ],
+      "documents": [
+        {
+          "url": "https://ad.easa.europa.eu/blob/EASA_AD_2026_0213.pdf/AD_2026-0213_1",
+          "label": "EASA_AD_2026_0213.pdf",
+          "kind": "pdf"
+        },
+        {
+          "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_112.zip/AD_2026-0213_2",
+          "label": "EASA_PAD_26_112.zip",
           "kind": "zip"
         }
       ]
@@ -1712,28 +1768,6 @@
       ]
     },
     {
-      "number": "2021-0268R1",
-      "url": "https://ad.easa.europa.eu/ad/2021-0268R1",
-      "issued_by": "EU",
-      "issue_date": "2026-10-26",
-      "effective_date": null,
-      "subject": "Flight Controls – Back-up Control Module and Power Supply – Operational Test / Replacement",
-      "class_hint": "ADR",
-      "approval_holders": [
-        "AIRBUS MILITARY SL"
-      ],
-      "models": [
-        "A400M"
-      ],
-      "documents": [
-        {
-          "url": "https://ad.easa.europa.eu/blob/A400M_Explanatory_Statement.pdf/ADR_2021-0268R1_1",
-          "label": "A400M_Explanatory_Statement.pdf",
-          "kind": "pdf"
-        }
-      ]
-    },
-    {
       "number": "2026-0201",
       "url": "https://ad.easa.europa.eu/ad/2026-0201",
       "issued_by": "EU",
@@ -1759,6 +1793,28 @@
           "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_111.zip/AD_2026-0201_2",
           "label": "EASA_PAD_26_111.zip",
           "kind": "zip"
+        }
+      ]
+    },
+    {
+      "number": "2021-0268R1",
+      "url": "https://ad.easa.europa.eu/ad/2021-0268R1",
+      "issued_by": "EU",
+      "issue_date": "2026-10-26",
+      "effective_date": null,
+      "subject": "Flight Controls – Back-up Control Module and Power Supply – Operational Test / Replacement",
+      "class_hint": "ADR",
+      "approval_holders": [
+        "AIRBUS MILITARY SL"
+      ],
+      "models": [
+        "A400M"
+      ],
+      "documents": [
+        {
+          "url": "https://ad.easa.europa.eu/blob/A400M_Explanatory_Statement.pdf/ADR_2021-0268R1_1",
+          "label": "A400M_Explanatory_Statement.pdf",
+          "kind": "pdf"
         }
       ]
     },
