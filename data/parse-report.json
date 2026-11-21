@@ -44,8 +44,8 @@
   ],
   "records_without_models": 10,
   "records_without_documents": 6,
-  "records_without_holder": 2,
-  "class_inferred": 40,
+  "records_without_holder": 3,
+  "class_inferred": 43,
   "model_tokens_starting_with_hyphen": [],
   "interim_warnings": []
 }
