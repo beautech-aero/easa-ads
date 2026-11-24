@@ -93,6 +93,17 @@
       "html_label": "HTML",
       "pdf_url": "https://ad.easa.europa.eu/blob/easa_biweekly_2026-10-26_2026-11-08_23-2026.pdf/biweekly",
       "pdf_label": "PDF"
+    },
+    {
+      "period": 24,
+      "from": "2026-11-09",
+      "to": "2026-11-22",
+      "csv_url": "https://ad.easa.europa.eu/blob/easa_biweekly_2026-11-09_2026-11-22_24-2026.csv/biweekly",
+      "csv_label": "CSV",
+      "html_url": "https://ad.easa.europa.eu/blob/easa_biweekly_2026-11-09_2026-11-22_24-2026.html/biweekly",
+      "html_label": "HTML",
+      "pdf_url": "https://ad.easa.europa.eu/blob/easa_biweekly_2026-11-09_2026-11-22_24-2026.pdf/biweekly",
+      "pdf_label": "PDF"
     }
   ],
   "publications": [
@@ -177,14 +188,14 @@
       ],
       "documents": [
         {
-          "url": "https://ad.easa.europa.eu/blob/EASA_AD_2026_0224.pdf/AD_2026-0224_1",
-          "label": "EASA_AD_2026_0224.pdf",
-          "kind": "pdf"
-        },
-        {
-          "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_118.zip/AD_2026-0224_2",
+          "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_118.zip/AD_2026-0224_1",
           "label": "EASA_PAD_26_118.zip",
           "kind": "zip"
+        },
+        {
+          "url": "https://ad.easa.europa.eu/blob/EASA_AD_2026_0224.pdf/AD_2026-0224_2",
+          "label": "EASA_AD_2026_0224.pdf",
+          "kind": "pdf"
         }
       ]
     },

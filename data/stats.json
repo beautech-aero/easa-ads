@@ -104,6 +104,15 @@
         "csv_url": "https://ad.easa.europa.eu/blob/easa_biweekly_2026-10-26_2026-11-08_23-2026.csv/biweekly",
         "csv_label": "CSV",
         "sha256": "f8f4def467d3287ba003f20dd837d02069d6112b28e4be1911cffd6db97e3fb1"
+      },
+      {
+        "period": 24,
+        "from": "2026-11-09",
+        "to": "2026-11-22",
+        "rows": 17,
+        "csv_url": "https://ad.easa.europa.eu/blob/easa_biweekly_2026-11-09_2026-11-22_24-2026.csv/biweekly",
+        "csv_label": "CSV",
+        "sha256": "482f8619d61f6346985a5f23129a8d9567a2954b2921947ad888304b11ffd39c"
       }
     ],
     "interim_page": {
@@ -112,7 +121,7 @@
       "records": 115,
       "issue_date_min": "2026-09-18",
       "issue_date_max": "2026-11-20",
-      "biweekly_periods": 8,
+      "biweekly_periods": 9,
       "window_from": "2026-09-18",
       "window_to": "2026-11-20",
       "note": "The interim page was retired in November 2026. These rows are the Safety Publications Tool publications in the window that are missing from the archive or newer than the archive's copy."
@@ -169,9 +178,9 @@
     "in_all_three": 47,
     "in_archive_and_biweekly": 120,
     "in_archive_and_interim": 56,
-    "in_biweekly_and_interim": 69,
+    "in_biweekly_and_interim": 86,
     "only_archive": 18300,
     "only_biweekly": 4,
-    "only_interim": 37
+    "only_interim": 20
   }
 }

@@ -1,0 +1,22 @@
+{
+  "period": 24,
+  "from": "2026-11-09",
+  "to": "2026-11-22",
+  "rows": 17,
+  "csv": {
+    "url": "https://ad.easa.europa.eu/blob/easa_biweekly_2026-11-09_2026-11-22_24-2026.csv/biweekly",
+    "label": "CSV",
+    "zip_filename": "easa_biweekly_24-2026.csv",
+    "member": "easa_biweekly_24-2026.csv",
+    "sha256": "482f8619d61f6346985a5f23129a8d9567a2954b2921947ad888304b11ffd39c",
+    "bytes": 2385
+  },
+  "html": {
+    "url": "https://ad.easa.europa.eu/blob/easa_biweekly_2026-11-09_2026-11-22_24-2026.html/biweekly",
+    "label": "HTML"
+  },
+  "pdf": {
+    "url": "https://ad.easa.europa.eu/blob/easa_biweekly_2026-11-09_2026-11-22_24-2026.pdf/biweekly",
+    "label": "PDF"
+  }
+}
