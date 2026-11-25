@@ -118,12 +118,12 @@
     "interim_page": {
       "url": "https://ad.easa.europa.eu/",
       "last_updated_raw": null,
-      "records": 115,
+      "records": 119,
       "issue_date_min": "2026-09-18",
-      "issue_date_max": "2026-11-20",
+      "issue_date_max": "2026-11-24",
       "biweekly_periods": 9,
       "window_from": "2026-09-18",
-      "window_to": "2026-11-20",
+      "window_to": "2026-11-24",
       "note": "The interim page was retired in November 2026. These rows are the Safety Publications Tool publications in the window that are missing from the archive or newer than the archive's copy."
     },
     "safety_publications_tool": {
@@ -134,15 +134,15 @@
   },
   "normalized": {
     "ad": {
-      "records": 17512,
+      "records": 17516,
       "by_class": {
-        "AD": 16599,
+        "AD": 16603,
         "ADR": 142,
         "EAD": 695,
         "PAD": 76
       },
       "issue_date_min": "1957-11-25",
-      "issue_date_max": "2026-11-20"
+      "issue_date_max": "2026-11-24"
     },
     "sib": {
       "records": 967,
@@ -161,9 +161,9 @@
       "issue_date_max": "2026-08-06"
     },
     "all": {
-      "records": 18492,
+      "records": 18496,
       "by_class": {
-        "AD": 16599,
+        "AD": 16603,
         "ADR": 142,
         "EAD": 695,
         "PAD": 76,
@@ -171,7 +171,7 @@
         "SIB": 967
       },
       "issue_date_min": "1957-11-25",
-      "issue_date_max": "2026-11-20"
+      "issue_date_max": "2026-11-24"
     }
   },
   "overlap": {
@@ -181,6 +181,6 @@
     "in_biweekly_and_interim": 86,
     "only_archive": 18300,
     "only_biweekly": 4,
-    "only_interim": 20
+    "only_interim": 24
   }
 }
