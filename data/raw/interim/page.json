@@ -3,7 +3,7 @@
   "last_updated_raw": null,
   "window": {
     "from": "2026-09-18",
-    "to": "2026-11-25"
+    "to": "2026-11-27"
   },
   "biweekly": [
     {
@@ -107,6 +107,81 @@
     }
   ],
   "publications": [
+    {
+      "number": "2026-0228",
+      "url": "https://ad.easa.europa.eu/ad/2026-0228",
+      "issued_by": "EU",
+      "issue_date": "2026-11-27",
+      "effective_date": "2026-12-11",
+      "subject": "Equipment / Furnishings – Rescue Winch Safety Cable – Removal",
+      "class_hint": null,
+      "approval_holders": [
+        "AIRBUS HELICOPTERS DEUTSCHLAND"
+      ],
+      "models": [
+        "MBB-BK 117",
+        "MBB-BK 117 D-3"
+      ],
+      "documents": [
+        {
+          "url": "https://ad.easa.europa.eu/blob/EASA_AD_2026_0228.pdf/AD_2026-0228_1",
+          "label": "EASA_AD_2026_0228.pdf",
+          "kind": "pdf"
+        },
+        {
+          "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_128.zip/AD_2026-0228_2",
+          "label": "EASA_PAD_26_128.zip",
+          "kind": "zip"
+        }
+      ]
+    },
+    {
+      "number": "2026-0227",
+      "url": "https://ad.easa.europa.eu/ad/2026-0227",
+      "issued_by": "EU",
+      "issue_date": "2026-11-27",
+      "effective_date": "2026-12-04",
+      "subject": "Windows – Passenger Cabin Window – Inspection",
+      "class_hint": null,
+      "approval_holders": [
+        "LEONARDO S.p.A. HELICOPTERS"
+      ],
+      "models": [
+        "AB139",
+        "AW139"
+      ],
+      "documents": [
+        {
+          "url": "https://ad.easa.europa.eu/blob/EASA_AD_2026_0227.pdf/AD_2026-0227_1",
+          "label": "EASA_AD_2026_0227.pdf",
+          "kind": "pdf"
+        }
+      ]
+    },
+    {
+      "number": "AIR750-2026-09-S-5700-ACS",
+      "url": "https://ad.easa.europa.eu/ad/AIR750-2026-09-S-5700-ACS",
+      "issued_by": "US",
+      "issue_date": "2026-11-27",
+      "effective_date": null,
+      "subject": "Piper PA-44 Seminole Unexpected Stall Behavior",
+      "class_hint": "SIB",
+      "approval_holders": [
+        "PIPER AIRCRAFT INC."
+      ],
+      "models": [
+        "PA-44 (Seminole)",
+        "PA-44-180 (Seminole)",
+        "PA-44-180T (Turbo Seminole)"
+      ],
+      "documents": [
+        {
+          "url": "https://ad.easa.europa.eu/blob/AIR750-2026-09-S-5700-ACS.pdf/SIB_AIR750-2026-09-S-5700-ACS_1",
+          "label": "AIR750-2026-09-S-5700-ACS.pdf",
+          "kind": "pdf"
+        }
+      ]
+    },
     {
       "number": "26-142",
       "url": "https://ad.easa.europa.eu/ad/26-142",
@@ -279,6 +354,30 @@
       ]
     },
     {
+      "number": "G-2026-0004R1",
+      "url": "https://ad.easa.europa.eu/ad/G-2026-0004R1",
+      "issued_by": "UK",
+      "issue_date": "2026-11-24",
+      "effective_date": "2026-12-03",
+      "subject": "Equipment / Furnishings – Personal Locator Beacon / Emergency Location Transmitter – Inspection",
+      "class_hint": null,
+      "approval_holders": [
+        "APPLIANCES"
+      ],
+      "models": [
+        "ATA 25 EQUIPMENT",
+        "FURNISHINGS",
+        "Emergency Locator Transmitters (ELT)"
+      ],
+      "documents": [
+        {
+          "url": "https://ad.easa.europa.eu/blob/G-2026-0004R1.pdf/AD_G-2026-0004R1_1",
+          "label": "G-2026-0004R1.pdf",
+          "kind": "pdf"
+        }
+      ]
+    },
+    {
       "number": "2026-0225",
       "url": "https://ad.easa.europa.eu/ad/2026-0225",
       "issued_by": "EU",
@@ -354,26 +453,32 @@
       ]
     },
     {
-      "number": "G-2026-0004R1",
-      "url": "https://ad.easa.europa.eu/ad/G-2026-0004R1",
-      "issued_by": "UK",
-      "issue_date": "2026-11-24",
-      "effective_date": "2026-12-03",
-      "subject": "Equipment / Furnishings – Personal Locator Beacon / Emergency Location Transmitter – Inspection",
+      "number": "2026-0223",
+      "url": "https://ad.easa.europa.eu/ad/2026-0223",
+      "issued_by": "EU",
+      "issue_date": "2026-11-20",
+      "effective_date": "2026-12-04",
+      "subject": "Pneumatic – Pylon / Wing Interface Bleed Duct and Fuel Pipe – Inspection / Modification / Replacement",
       "class_hint": null,
       "approval_holders": [
-        "APPLIANCES"
+        "AIRBUS S.A.S."
       ],
       "models": [
-        "ATA 25 EQUIPMENT",
-        "FURNISHINGS",
-        "Emergency Locator Transmitters (ELT)"
+        "A380",
+        "A380-841",
+        "A380-842",
+        "A380-861"
       ],
       "documents": [
         {
-          "url": "https://ad.easa.europa.eu/blob/G-2026-0004R1.pdf/AD_G-2026-0004R1_1",
-          "label": "G-2026-0004R1.pdf",
+          "url": "https://ad.easa.europa.eu/blob/EASA_AD_2026_0223.pdf/AD_2026-0223_1",
+          "label": "EASA_AD_2026_0223.pdf",
           "kind": "pdf"
+        },
+        {
+          "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_125.zip/AD_2026-0223_2",
+          "label": "EASA_PAD_26_125.zip",
+          "kind": "zip"
         }
       ]
     },
@@ -436,36 +541,6 @@
           "url": "https://ad.easa.europa.eu/blob/EASA_AD_2026_0224.pdf/AD_2026-0224_2",
           "label": "EASA_AD_2026_0224.pdf",
           "kind": "pdf"
-        }
-      ]
-    },
-    {
-      "number": "2026-0223",
-      "url": "https://ad.easa.europa.eu/ad/2026-0223",
-      "issued_by": "EU",
-      "issue_date": "2026-11-20",
-      "effective_date": "2026-12-04",
-      "subject": "Pneumatic – Pylon / Wing Interface Bleed Duct and Fuel Pipe – Inspection / Modification / Replacement",
-      "class_hint": null,
-      "approval_holders": [
-        "AIRBUS S.A.S."
-      ],
-      "models": [
-        "A380",
-        "A380-841",
-        "A380-842",
-        "A380-861"
-      ],
-      "documents": [
-        {
-          "url": "https://ad.easa.europa.eu/blob/EASA_AD_2026_0223.pdf/AD_2026-0223_1",
-          "label": "EASA_AD_2026_0223.pdf",
-          "kind": "pdf"
-        },
-        {
-          "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_125.zip/AD_2026-0223_2",
-          "label": "EASA_PAD_26_125.zip",
-          "kind": "zip"
         }
       ]
     },
@@ -572,6 +647,29 @@
       ]
     },
     {
+      "number": "26-141",
+      "url": "https://ad.easa.europa.eu/ad/26-141",
+      "issued_by": "EU",
+      "issue_date": "2026-11-18",
+      "effective_date": null,
+      "subject": "Flight Controls – Flight Control and Guidance System – Modification",
+      "class_hint": "PAD",
+      "approval_holders": [
+        "AIRBUS S.A.S."
+      ],
+      "models": [
+        "A350",
+        "A350-941"
+      ],
+      "documents": [
+        {
+          "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_141.pdf/PAD_26-141_1",
+          "label": "EASA_PAD_26_141.pdf",
+          "kind": "pdf"
+        }
+      ]
+    },
+    {
       "number": "CF-2026-58",
       "url": "https://ad.easa.europa.eu/ad/CF-2026-58",
       "issued_by": "CA",
@@ -608,29 +706,6 @@
       ]
     },
     {
-      "number": "26-141",
-      "url": "https://ad.easa.europa.eu/ad/26-141",
-      "issued_by": "EU",
-      "issue_date": "2026-11-18",
-      "effective_date": null,
-      "subject": "Flight Controls – Flight Control and Guidance System – Modification",
-      "class_hint": "PAD",
-      "approval_holders": [
-        "AIRBUS S.A.S."
-      ],
-      "models": [
-        "A350",
-        "A350-941"
-      ],
-      "documents": [
-        {
-          "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_141.pdf/PAD_26-141_1",
-          "label": "EASA_PAD_26_141.pdf",
-          "kind": "pdf"
-        }
-      ]
-    },
-    {
       "number": "26-140",
       "url": "https://ad.easa.europa.eu/ad/26-140",
       "issued_by": "EU",
@@ -655,6 +730,35 @@
         {
           "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_140.pdf/PAD_26-140_1",
           "label": "EASA_PAD_26_140.pdf",
+          "kind": "pdf"
+        }
+      ]
+    },
+    {
+      "number": "2026-0139R1",
+      "url": "https://ad.easa.europa.eu/ad/2026-0139R1",
+      "issued_by": "EU",
+      "issue_date": "2026-11-18",
+      "effective_date": "2026-11-25",
+      "subject": "Air Conditioning – Air Distribution / Air Recirculation Fans – Inspection(s)",
+      "class_hint": null,
+      "approval_holders": [
+        "SAAB AB"
+      ],
+      "models": [
+        "340",
+        "340B",
+        "SF340A"
+      ],
+      "documents": [
+        {
+          "url": "https://ad.easa.europa.eu/blob/EASA_AD_2026_0139.zip/AD_2026-0139R1_1",
+          "label": "EASA_AD_2026_0139.zip",
+          "kind": "zip"
+        },
+        {
+          "url": "https://ad.easa.europa.eu/blob/EASA_AD_2026_0139_R1.pdf/AD_2026-0139R1_2",
+          "label": "EASA_AD_2026_0139_R1.pdf",
           "kind": "pdf"
         }
       ]
@@ -685,35 +789,6 @@
           "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_124.zip/AD_2026-0220_2",
           "label": "EASA_PAD_26_124.zip",
           "kind": "zip"
-        }
-      ]
-    },
-    {
-      "number": "2026-0139R1",
-      "url": "https://ad.easa.europa.eu/ad/2026-0139R1",
-      "issued_by": "EU",
-      "issue_date": "2026-11-18",
-      "effective_date": "2026-11-25",
-      "subject": "Air Conditioning – Air Distribution / Air Recirculation Fans – Inspection(s)",
-      "class_hint": null,
-      "approval_holders": [
-        "SAAB AB"
-      ],
-      "models": [
-        "340",
-        "340B",
-        "SF340A"
-      ],
-      "documents": [
-        {
-          "url": "https://ad.easa.europa.eu/blob/EASA_AD_2026_0139.zip/AD_2026-0139R1_1",
-          "label": "EASA_AD_2026_0139.zip",
-          "kind": "zip"
-        },
-        {
-          "url": "https://ad.easa.europa.eu/blob/EASA_AD_2026_0139_R1.pdf/AD_2026-0139R1_2",
-          "label": "EASA_AD_2026_0139_R1.pdf",
-          "kind": "pdf"
         }
       ]
     },
@@ -848,29 +923,30 @@
       ]
     },
     {
-      "number": "26-138",
-      "url": "https://ad.easa.europa.eu/ad/26-138",
-      "issued_by": "EU",
+      "number": "SAIB-2026-18",
+      "url": "https://ad.easa.europa.eu/ad/SAIB-2026-18",
+      "issued_by": "US",
       "issue_date": "2026-11-13",
       "effective_date": null,
-      "subject": "Powerplant – Engine Mounts – Inspection",
-      "class_hint": "PAD",
+      "subject": "Nose/Tail Landing Gear",
+      "class_hint": "SIB",
       "approval_holders": [
-        "AIRBUS S.A.S."
+        "AeroControlex Division",
+        "BOEING"
       ],
       "models": [
-        "A330",
-        "A330-201",
-        "A330-202",
-        "A330-203",
-        "A330-301",
-        "A330-302",
-        "A330-303"
+        "FAA STC ST01255CH",
+        "737",
+        "737-100",
+        "737-200",
+        "737-300",
+        "737-400",
+        "737-500"
       ],
       "documents": [
         {
-          "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_138.pdf/PAD_26-138_1",
-          "label": "EASA_PAD_26_138.pdf",
+          "url": "https://ad.easa.europa.eu/blob/SAIB-2026-18.pdf/SIB_SAIB-2026-18_1",
+          "label": "SAIB-2026-18.pdf",
           "kind": "pdf"
         }
       ]
@@ -901,30 +977,29 @@
       ]
     },
     {
-      "number": "SAIB-2026-18",
-      "url": "https://ad.easa.europa.eu/ad/SAIB-2026-18",
-      "issued_by": "US",
+      "number": "26-138",
+      "url": "https://ad.easa.europa.eu/ad/26-138",
+      "issued_by": "EU",
       "issue_date": "2026-11-13",
       "effective_date": null,
-      "subject": "Nose/Tail Landing Gear",
-      "class_hint": "SIB",
+      "subject": "Powerplant – Engine Mounts – Inspection",
+      "class_hint": "PAD",
       "approval_holders": [
-        "AeroControlex Division",
-        "BOEING"
+        "AIRBUS S.A.S."
       ],
       "models": [
-        "FAA STC ST01255CH",
-        "737",
-        "737-100",
-        "737-200",
-        "737-300",
-        "737-400",
-        "737-500"
+        "A330",
+        "A330-201",
+        "A330-202",
+        "A330-203",
+        "A330-301",
+        "A330-302",
+        "A330-303"
       ],
       "documents": [
         {
-          "url": "https://ad.easa.europa.eu/blob/SAIB-2026-18.pdf/SIB_SAIB-2026-18_1",
-          "label": "SAIB-2026-18.pdf",
+          "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_138.pdf/PAD_26-138_1",
+          "label": "EASA_PAD_26_138.pdf",
           "kind": "pdf"
         }
       ]
@@ -1129,47 +1204,6 @@
       ]
     },
     {
-      "number": "26-137",
-      "url": "https://ad.easa.europa.eu/ad/26-137",
-      "issued_by": "EU",
-      "issue_date": "2026-11-12",
-      "effective_date": null,
-      "subject": "Engine – Low Pressure Compressor Blades – Inspection / Replacement",
-      "class_hint": "PAD",
-      "approval_holders": [
-        "ROLLS-ROYCE DEUTSCHLAND Ltd & Co KG"
-      ],
-      "models": [
-        "TRENT 1000",
-        "Trent 1000-A",
-        "Trent 1000-A2",
-        "Trent 1000-AE",
-        "Trent 1000-AE2",
-        "Trent 1000-C",
-        "Trent 1000-C2",
-        "Trent 1000-CE",
-        "Trent 1000-CE2",
-        "Trent 1000-D",
-        "Trent 1000-D2",
-        "Trent 1000-E",
-        "Trent 1000-E2",
-        "Trent 1000-G",
-        "Trent 1000-G2",
-        "Trent 1000-H",
-        "Trent 1000-H2",
-        "Trent 1000-J2",
-        "Trent 1000-K2",
-        "Trent 1000-L2"
-      ],
-      "documents": [
-        {
-          "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_137.pdf/PAD_26-137_1",
-          "label": "EASA_PAD_26_137.pdf",
-          "kind": "pdf"
-        }
-      ]
-    },
-    {
       "number": "2009-28R2",
       "url": "https://ad.easa.europa.eu/ad/2009-28R2",
       "issued_by": "EU",
@@ -1213,6 +1247,69 @@
         {
           "url": "https://ad.easa.europa.eu/blob/EASA_AD_2026_0217.pdf/AD_2026-0217_1",
           "label": "EASA_AD_2026_0217.pdf",
+          "kind": "pdf"
+        }
+      ]
+    },
+    {
+      "number": "26-137",
+      "url": "https://ad.easa.europa.eu/ad/26-137",
+      "issued_by": "EU",
+      "issue_date": "2026-11-12",
+      "effective_date": null,
+      "subject": "Engine – Low Pressure Compressor Blades – Inspection / Replacement",
+      "class_hint": "PAD",
+      "approval_holders": [
+        "ROLLS-ROYCE DEUTSCHLAND Ltd & Co KG"
+      ],
+      "models": [
+        "TRENT 1000",
+        "Trent 1000-A",
+        "Trent 1000-A2",
+        "Trent 1000-AE",
+        "Trent 1000-AE2",
+        "Trent 1000-C",
+        "Trent 1000-C2",
+        "Trent 1000-CE",
+        "Trent 1000-CE2",
+        "Trent 1000-D",
+        "Trent 1000-D2",
+        "Trent 1000-E",
+        "Trent 1000-E2",
+        "Trent 1000-G",
+        "Trent 1000-G2",
+        "Trent 1000-H",
+        "Trent 1000-H2",
+        "Trent 1000-J2",
+        "Trent 1000-K2",
+        "Trent 1000-L2"
+      ],
+      "documents": [
+        {
+          "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_137.pdf/PAD_26-137_1",
+          "label": "EASA_PAD_26_137.pdf",
+          "kind": "pdf"
+        }
+      ]
+    },
+    {
+      "number": "26-134",
+      "url": "https://ad.easa.europa.eu/ad/26-134",
+      "issued_by": "EU",
+      "issue_date": "2026-11-11",
+      "effective_date": null,
+      "subject": "Rotorcraft Flight Manual – Limitations and Normal Procedures Section – Amendment",
+      "class_hint": "PAD",
+      "approval_holders": [
+        "AIRBUS HELICOPTERS"
+      ],
+      "models": [
+        "EC175"
+      ],
+      "documents": [
+        {
+          "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_134.pdf/PAD_26-134_1",
+          "label": "EASA_PAD_26_134.pdf",
           "kind": "pdf"
         }
       ]
@@ -1273,28 +1370,6 @@
         {
           "url": "https://ad.easa.europa.eu/blob/EASA_AD_2026_0216.pdf/AD_2026-0216_1",
           "label": "EASA_AD_2026_0216.pdf",
-          "kind": "pdf"
-        }
-      ]
-    },
-    {
-      "number": "26-134",
-      "url": "https://ad.easa.europa.eu/ad/26-134",
-      "issued_by": "EU",
-      "issue_date": "2026-11-11",
-      "effective_date": null,
-      "subject": "Rotorcraft Flight Manual – Limitations and Normal Procedures Section – Amendment",
-      "class_hint": "PAD",
-      "approval_holders": [
-        "AIRBUS HELICOPTERS"
-      ],
-      "models": [
-        "EC175"
-      ],
-      "documents": [
-        {
-          "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_134.pdf/PAD_26-134_1",
-          "label": "EASA_PAD_26_134.pdf",
           "kind": "pdf"
         }
       ]
@@ -1426,31 +1501,6 @@
       ]
     },
     {
-      "number": "US-2026-21-07",
-      "url": "https://ad.easa.europa.eu/ad/US-2026-21-07",
-      "issued_by": "US",
-      "issue_date": "2026-11-11",
-      "effective_date": "2026-12-01",
-      "subject": "Wings - Left- and Right-Side Form-in-Place Gasket - Inspection",
-      "class_hint": null,
-      "approval_holders": [
-        "BOEING"
-      ],
-      "models": [
-        "737",
-        "737-8 (MAX)",
-        "737-8200 (MAX)",
-        "737-9 (MAX)"
-      ],
-      "documents": [
-        {
-          "url": "https://ad.easa.europa.eu/blob/2026-21-07.pdf/AD_US-2026-21-07_1",
-          "label": "2026-21-07.pdf",
-          "kind": "pdf"
-        }
-      ]
-    },
-    {
       "number": "US-2026-21-08",
       "url": "https://ad.easa.europa.eu/ad/US-2026-21-08",
       "issued_by": "US",
@@ -1472,6 +1522,31 @@
         {
           "url": "https://ad.easa.europa.eu/blob/2026-21-08_superseded.pdf/AD_US-2026-21-08_1",
           "label": "2026-21-08_superseded.pdf",
+          "kind": "pdf"
+        }
+      ]
+    },
+    {
+      "number": "US-2026-21-07",
+      "url": "https://ad.easa.europa.eu/ad/US-2026-21-07",
+      "issued_by": "US",
+      "issue_date": "2026-11-11",
+      "effective_date": "2026-12-01",
+      "subject": "Wings - Left- and Right-Side Form-in-Place Gasket - Inspection",
+      "class_hint": null,
+      "approval_holders": [
+        "BOEING"
+      ],
+      "models": [
+        "737",
+        "737-8 (MAX)",
+        "737-8200 (MAX)",
+        "737-9 (MAX)"
+      ],
+      "documents": [
+        {
+          "url": "https://ad.easa.europa.eu/blob/2026-21-07.pdf/AD_US-2026-21-07_1",
+          "label": "2026-21-07.pdf",
           "kind": "pdf"
         }
       ]
@@ -1664,33 +1739,6 @@
       ]
     },
     {
-      "number": "26-133",
-      "url": "https://ad.easa.europa.eu/ad/26-133",
-      "issued_by": "EU",
-      "issue_date": "2026-11-04",
-      "effective_date": null,
-      "subject": "Doors – Main Deck Cargo Door Actuator Bearing Fittings – Inspection",
-      "class_hint": "PAD",
-      "approval_holders": [
-        "AIRBUS S.A.S."
-      ],
-      "models": [
-        "A310",
-        "A310-203",
-        "A310-203C",
-        "A310-221",
-        "A310-222",
-        "EASA STC 10013960"
-      ],
-      "documents": [
-        {
-          "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_133.pdf/PAD_26-133_1",
-          "label": "EASA_PAD_26_133.pdf",
-          "kind": "pdf"
-        }
-      ]
-    },
-    {
       "number": "26-132",
       "url": "https://ad.easa.europa.eu/ad/26-132",
       "issued_by": "EU",
@@ -1720,31 +1768,6 @@
         {
           "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_132.pdf/PAD_26-132_1",
           "label": "EASA_PAD_26_132.pdf",
-          "kind": "pdf"
-        }
-      ]
-    },
-    {
-      "number": "2026-0211",
-      "url": "https://ad.easa.europa.eu/ad/2026-0211",
-      "issued_by": "EU",
-      "issue_date": "2026-11-04",
-      "effective_date": "2026-11-18",
-      "subject": "Fire Protection – Pyrotechnical Cartridge – Inspection",
-      "class_hint": null,
-      "approval_holders": [
-        "AIRBUS HELICOPTERS"
-      ],
-      "models": [
-        "SA 330",
-        "AS 332",
-        "EC 225",
-        "SA 330 J"
-      ],
-      "documents": [
-        {
-          "url": "https://ad.easa.europa.eu/blob/EASA_AD_2026_0211.pdf/AD_2026-0211_1",
-          "label": "EASA_AD_2026_0211.pdf",
           "kind": "pdf"
         }
       ]
@@ -1802,6 +1825,58 @@
           "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_112.zip/AD_2026-0213_2",
           "label": "EASA_PAD_26_112.zip",
           "kind": "zip"
+        }
+      ]
+    },
+    {
+      "number": "2026-0211",
+      "url": "https://ad.easa.europa.eu/ad/2026-0211",
+      "issued_by": "EU",
+      "issue_date": "2026-11-04",
+      "effective_date": "2026-11-18",
+      "subject": "Fire Protection – Pyrotechnical Cartridge – Inspection",
+      "class_hint": null,
+      "approval_holders": [
+        "AIRBUS HELICOPTERS"
+      ],
+      "models": [
+        "SA 330",
+        "AS 332",
+        "EC 225",
+        "SA 330 J"
+      ],
+      "documents": [
+        {
+          "url": "https://ad.easa.europa.eu/blob/EASA_AD_2026_0211.pdf/AD_2026-0211_1",
+          "label": "EASA_AD_2026_0211.pdf",
+          "kind": "pdf"
+        }
+      ]
+    },
+    {
+      "number": "26-133",
+      "url": "https://ad.easa.europa.eu/ad/26-133",
+      "issued_by": "EU",
+      "issue_date": "2026-11-04",
+      "effective_date": null,
+      "subject": "Doors – Main Deck Cargo Door Actuator Bearing Fittings – Inspection",
+      "class_hint": "PAD",
+      "approval_holders": [
+        "AIRBUS S.A.S."
+      ],
+      "models": [
+        "A310",
+        "A310-203",
+        "A310-203C",
+        "A310-221",
+        "A310-222",
+        "EASA STC 10013960"
+      ],
+      "documents": [
+        {
+          "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_133.pdf/PAD_26-133_1",
+          "label": "EASA_PAD_26_133.pdf",
+          "kind": "pdf"
         }
       ]
     },
@@ -1988,23 +2063,53 @@
       ]
     },
     {
-      "number": "2026-0208",
-      "url": "https://ad.easa.europa.eu/ad/2026-0208",
-      "issued_by": "EU",
+      "number": "CF-2026-55",
+      "url": "https://ad.easa.europa.eu/ad/CF-2026-55",
+      "issued_by": "CA",
       "issue_date": "2026-11-02",
-      "effective_date": null,
-      "subject": "Engine – Low Pressure Turbine Stage 2 Discs – Replacement",
-      "class_hint": "ADR",
+      "effective_date": "2026-11-06",
+      "subject": "Wings – Potential Incorrect Sealant Application on Lower Stabilizer Fitting Bolts - Inspection",
+      "class_hint": null,
       "approval_holders": [
-        "EPI EUROPROP INTERNATIONAL GmbH"
+        "AIRBUS CANADA LP"
       ],
       "models": [
-        "TP400-D6"
+        "BD-500 (A220 Series)",
+        "BD-500-1A11 (A220-300)"
       ],
       "documents": [
         {
-          "url": "https://ad.easa.europa.eu/blob/TP400_Explanatory_Statement.pdf/ADR_2026-0208_1",
-          "label": "TP400_Explanatory_Statement.pdf",
+          "url": "https://ad.easa.europa.eu/blob/CF-2026-55-E.pdf/AD_CF-2026-55_1",
+          "label": "CF-2026-55-E.pdf",
+          "kind": "pdf"
+        },
+        {
+          "url": "https://ad.easa.europa.eu/blob/CF-2026-55-F.pdf/AD_CF-2026-55_2",
+          "label": "CF-2026-55-F.pdf",
+          "kind": "pdf"
+        }
+      ]
+    },
+    {
+      "number": "26-131",
+      "url": "https://ad.easa.europa.eu/ad/26-131",
+      "issued_by": "EU",
+      "issue_date": "2026-11-02",
+      "effective_date": null,
+      "subject": "Flight Controls – Aileron and Tab / Crank Arm Rivets for the Aileron Potentiometer – Inspection",
+      "class_hint": "PAD",
+      "approval_holders": [
+        "SAAB AB"
+      ],
+      "models": [
+        "340",
+        "340B",
+        "SF340A"
+      ],
+      "documents": [
+        {
+          "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_131.pdf/PAD_26-131_1",
+          "label": "EASA_PAD_26_131.pdf",
           "kind": "pdf"
         }
       ]
@@ -2038,53 +2143,23 @@
       ]
     },
     {
-      "number": "26-131",
-      "url": "https://ad.easa.europa.eu/ad/26-131",
+      "number": "2026-0208",
+      "url": "https://ad.easa.europa.eu/ad/2026-0208",
       "issued_by": "EU",
       "issue_date": "2026-11-02",
       "effective_date": null,
-      "subject": "Flight Controls – Aileron and Tab / Crank Arm Rivets for the Aileron Potentiometer – Inspection",
-      "class_hint": "PAD",
+      "subject": "Engine – Low Pressure Turbine Stage 2 Discs – Replacement",
+      "class_hint": "ADR",
       "approval_holders": [
-        "SAAB AB"
+        "EPI EUROPROP INTERNATIONAL GmbH"
       ],
       "models": [
-        "340",
-        "340B",
-        "SF340A"
+        "TP400-D6"
       ],
       "documents": [
         {
-          "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_131.pdf/PAD_26-131_1",
-          "label": "EASA_PAD_26_131.pdf",
-          "kind": "pdf"
-        }
-      ]
-    },
-    {
-      "number": "CF-2026-55",
-      "url": "https://ad.easa.europa.eu/ad/CF-2026-55",
-      "issued_by": "CA",
-      "issue_date": "2026-11-02",
-      "effective_date": "2026-11-06",
-      "subject": "Wings – Potential Incorrect Sealant Application on Lower Stabilizer Fitting Bolts - Inspection",
-      "class_hint": null,
-      "approval_holders": [
-        "AIRBUS CANADA LP"
-      ],
-      "models": [
-        "BD-500 (A220 Series)",
-        "BD-500-1A11 (A220-300)"
-      ],
-      "documents": [
-        {
-          "url": "https://ad.easa.europa.eu/blob/CF-2026-55-E.pdf/AD_CF-2026-55_1",
-          "label": "CF-2026-55-E.pdf",
-          "kind": "pdf"
-        },
-        {
-          "url": "https://ad.easa.europa.eu/blob/CF-2026-55-F.pdf/AD_CF-2026-55_2",
-          "label": "CF-2026-55-F.pdf",
+          "url": "https://ad.easa.europa.eu/blob/TP400_Explanatory_Statement.pdf/ADR_2026-0208_1",
+          "label": "TP400_Explanatory_Statement.pdf",
           "kind": "pdf"
         }
       ]
@@ -2577,29 +2652,6 @@
         {
           "url": "https://ad.easa.europa.eu/blob/2026-20-14.pdf/AD_US-2026-20-14_1",
           "label": "2026-20-14.pdf",
-          "kind": "pdf"
-        }
-      ]
-    },
-    {
-      "number": "26-128",
-      "url": "https://ad.easa.europa.eu/ad/26-128",
-      "issued_by": "EU",
-      "issue_date": "2026-10-21",
-      "effective_date": null,
-      "subject": "Equipment / Furnishings – Rescue Winch Safety Cable – Removal",
-      "class_hint": "PAD",
-      "approval_holders": [
-        "AIRBUS HELICOPTERS DEUTSCHLAND"
-      ],
-      "models": [
-        "MBB-BK 117",
-        "MBB-BK 117 D-3"
-      ],
-      "documents": [
-        {
-          "url": "https://ad.easa.europa.eu/blob/EASA_PAD_26_128.pdf/PAD_26-128_1",
-          "label": "EASA_PAD_26_128.pdf",
           "kind": "pdf"
         }
       ]
